@@ -16,11 +16,9 @@
       </div>
     </div>
 
-    <form class="form-container">
-      <input type="text" class="form-control" :value="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model="motto" placeholder="v-model" />
-      <input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />
-    </form>
+    <view>data: {{count}}</view>
+    <button @click="add">add</button>
+    <button @click="minus">minus</button>
 
     <a href="/pages/counter/main" class="counter">去往Vuex示例页面</a>
 
@@ -35,8 +33,14 @@
 
 <script>
 import card from '@/components/card'
+import store from '@/store'
 
 export default {
+  computed: {
+    count () {
+      return store.state.data
+    }
+  },
   data () {
     return {
       motto: 'Hello miniprograme',
@@ -63,6 +67,12 @@ export default {
     clickHandle (ev) {
       console.log('clickHandle:', ev)
       // throw {message: 'custom test'}
+    },
+    add: function () {
+      store.commit('inc')
+    },
+    minus: function () {
+      store.commit('dec')
     }
   },
 
