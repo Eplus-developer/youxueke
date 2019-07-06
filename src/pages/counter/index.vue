@@ -5,6 +5,9 @@
       <button @click="increment">+</button>
       <button @click="decrement">-</button>
     </p>
+    <view>abcd</view>
+    <view>hhhh</view>
+    <i-button type="primary" v-bind:click="handleClick">这是一个按钮</i-button>
   </div>
 </template>
 
@@ -24,12 +27,15 @@ export default {
     },
     decrement () {
       store.commit('decrement')
+    },
+    clickHandle (ev) {
+      console.log('clicked')
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
 .counter-warp {
   text-align: center;
   margin-top: 100px;
