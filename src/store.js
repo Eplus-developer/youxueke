@@ -7,16 +7,35 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
   state: {
-    data: 0
+    'curCity': '昆明',
+    'isLogin': false,
+    'userInfo': {
+      avatarUrl: '',
+      city: '',
+      gender: '',
+      nickName: '',
+      province: ''
+    }
   },
   mutations: {
-    inc: (state) => {
-      const obj = state
-      obj.data += 1
+    updateCity: (state, change) => {
+      state.curCity = change
     },
-    dec: (state) => {
-      const obj = state
-      obj.data -= 1
+    updateIsLogin: (state, change) => {
+      state.isLogin = change
+    },
+    cleanUserInfo: (state) => {
+      state.userInfo = {
+        avatarUrl: '',
+        city: '',
+        gender: '',
+        nickName: '',
+        province: ''
+      }
+    },
+    updateUser: (state, change) => {
+      change.gender = change.gender === 1 ? '男' : '女'
+      state.userInfo = change
     }
   }
 })
