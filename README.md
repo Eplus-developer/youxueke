@@ -1,9 +1,37 @@
-# 优学课
+# youxueke
 
-华东师范大学软件学院学生讲题平台
+> A Mpvue project
 
-新增ZanUI库，引入的代码在/style文件夹下，打包之后将这个文件夹直接移入/dist/wx下，引用方式参考我使用的demo，或者移步[这里](https://github.com/TalkingData/iview-weapp)
+## Build Setup
 
-注意如果直接将style文件夹放入/src下进行编译，结果中自定义组件无法解析
+``` bash
+# 初始化项目
+vue init mpvue/mpvue-quickstart myproject
+cd myproject
 
-加入了全局状态管理器，参考我在index页面中使用的计数器
+# 安装依赖
+yarn
+
+# 开发时构建
+npm dev
+
+# 打包构建
+npm build
+
+# 指定平台的开发时构建(微信、百度、头条、支付宝)
+npm dev:wx
+npm dev:swan
+npm dev:tt
+npm dev:my
+
+# 指定平台的打包构建
+npm build:wx
+npm build:swan
+npm build:tt
+npm build:my
+
+# 生成 bundle 分析报告
+npm run build --report
+```
+
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
