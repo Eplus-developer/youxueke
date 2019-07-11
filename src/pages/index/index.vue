@@ -1,5 +1,5 @@
 <template>
-  <div @click="clickHandle">
+  <div @click="clickHandle" class="outer-most">
 
     <div class="userinfo" @click="bindViewTap">
       <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
@@ -133,4 +133,8 @@ export default {
   height:1rem;
   background-color:green;
 }
+
+  .outer-most {
+    padding-bottom: 170rpx;
+  }
 </style>

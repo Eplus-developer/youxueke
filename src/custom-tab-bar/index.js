@@ -1,5 +1,3 @@
-import Vue from 'vue'
-import App from './main'
+Component({
 
-const app = new Vue(App)
-app.$mount()
+});

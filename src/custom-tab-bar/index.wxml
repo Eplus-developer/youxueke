@@ -1,0 +1,13 @@
+<cover-view class="wrapper">
+  <cover-view class="cell">
+    <cover-image src="/static/tabs/home.png" class="path-icon"></cover-image>
+    <cover-view class='path-text'>首页</cover-view>
+  </cover-view>
+  <cover-view class="cell">
+    <cover-image src="/static/images/user.png" class='center-button'></cover-image>
+  </cover-view>
+  <cover-view class="cell">
+    <cover-image src="/static/tabs/orders.png" class='path-icon'></cover-image>
+    <cover-view class='path-text'>个人中心</cover-view>
+  </cover-view>
+</cover-view>

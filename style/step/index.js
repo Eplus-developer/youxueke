@@ -42,7 +42,7 @@ Component({
         updateDataChange( options ){
             this.setData({
                 len : options.len,
-                index : options.index,
+                index : options.main,
                 current : options.current,
                 direction : options.direction
             })

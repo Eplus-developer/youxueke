@@ -7,14 +7,14 @@
             <view class="i-modal-actions" wx:if="{{ actions.length }}">
                 <block wx:if="{{ actionMode === 'horizontal' }}">
                     <i-grid i-class="i-modal-grid">
-                        <i-grid-item i-class="{{ actions.length === (index + 1) ? 'i-modal-grid-item-last' : 'i-modal-grid-item' }}" wx:for="{{ actions }}" wx:key="{{ item.name }}">
-                            <template is="button" data="{{ item, index }}"></template>
+                        <i-grid-item i-class="{{ actions.length === (main + 1) ? 'i-modal-grid-item-last' : 'i-modal-grid-item' }}" wx:for="{{ actions }}" wx:key="{{ item.name }}">
+                            <template is="button" data="{{ item, main }}"></template>
                         </i-grid-item>
                     </i-grid>
                 </block>
                 <block wx:else>
                     <view class="i-modal-action-vertical" wx:for="{{ actions }}" wx:key="{{ item.name }}">
-                        <template is="button" data="{{ item, index }}"></template>
+                        <template is="button" data="{{ item, main }}"></template>
                     </view>
                 </block>
             </view>
@@ -32,7 +32,7 @@
     </view>
 </view>
 <template name="button">
-    <i-button long type="ghost" data-index="{{ index }}" bind:click="handleClickItem">
+    <i-button long type="ghost" data-index="{{ main }}" bind:click="handleClickItem">
         <view class="i-modal-btn-loading" wx:if="{{ item.loading }}"></view>
         <i-icon wx:if="{{ item.icon }}" type="{{ item.icon }}" i-class="i-modal-btn-icon"></i-icon>
         <view class="i-modal-btn-text" style="{{ item.color ? 'color: ' + item.color : '' }}">{{ item.name }}</view>
