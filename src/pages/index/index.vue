@@ -68,6 +68,9 @@ export default {
 
   created () {
     // let app = getApp()
+  },
+  onShow () {
+    this.$root.$mp.page.getTabBar().setData({selected: 1})
   }
 }
 </script>

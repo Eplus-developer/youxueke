@@ -24,6 +24,9 @@
           {title: 'two'}
         ]
       }
+    },
+    onShow () {
+      this.$root.$mp.page.getTabBar().setData({selected: 3})
     }
   }
 </script>

@@ -1,9 +1,11 @@
 .wrapper {
+  position: relative;
   width: 100%;
   height: 150rpx;
   background: #fff;
   border-top: #2f2f2f2f solid .05em;
   z-index: 200;
+  overflow: visible;
 }
 
 .cell {
@@ -18,6 +20,8 @@
 
 .wrapper .cell:nth-child(2) {
   left: 33%;
+  top: -30%;
+  background: #00000000;
 }
 
 .wrapper .cell:nth-child(3) {
@@ -37,7 +41,6 @@
 }
 
 .center-button {
-  position: relative;
   width: 55%;
   margin: 0 auto;
 }

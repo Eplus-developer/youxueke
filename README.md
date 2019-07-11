@@ -35,3 +35,7 @@ npm run build --report
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+#### 我们以后如果有备注可以在README里面打一下，方便交流
+---
+##### 7/11 更新了底部的tab bar，完成了正常的显示和跳转功能。需要将/src/custom-tab-bar文件夹手动复制到/dist/wx/下正常使用
