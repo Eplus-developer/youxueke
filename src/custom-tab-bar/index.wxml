@@ -1,13 +1,29 @@
-<cover-view class="wrapper">
+<cover-view class="wrapper" animation='{{tab_animation}}'>
   <cover-view class="cell" bindtap='left'>
     <cover-image src="{{selected === 1 ? icon_selected[0] : icon[0]}}" class="path-icon"></cover-image>
     <cover-view class='path-text'>首页</cover-view>
   </cover-view>
   <cover-view class="cell">
-    <cover-image src="{{icon[1]}}" class='center-button'></cover-image>
+    <cover-image  bindtap='post' animation='{{post_animation}}' src="{{icon[1]}}" class='center-button'></cover-image>
   </cover-view>
   <cover-view class="cell" bindtap='right'>
     <cover-image src="{{selected === 3 ? icon_selected[2] : icon[2]}}" class='path-icon'></cover-image>
     <cover-view class='path-text'>个人中心</cover-view>
+  </cover-view>
+</cover-view>
+<cover-view class='popup' animation='{{pop_animation}}'>
+  <cover-view></cover-view>
+  <cover-view>
+    <cover-view class='popup-cell'>
+      <cover-image src='/static/icons/question.png' class='popup-icon'></cover-image>
+      <cover-view>提问</cover-view>
+    </cover-view>
+    <cover-view class='popup-cell'>
+      <cover-image src='/static/icons/post.png' class='popup-icon'></cover-image>
+      <cover-view>发布</cover-view>
+    </cover-view>
+  </cover-view>
+  <cover-view class='bottom-cell'>
+    <cover-image src='/static/icons/close.png' bindtap='collapse' animation='{{close_animation}}'></cover-image>
   </cover-view>
 </cover-view>
