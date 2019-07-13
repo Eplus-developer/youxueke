@@ -4,7 +4,7 @@
   height: 150rpx;
   background: #fff;
   border-top: #2f2f2f2f solid .05em;
-  overflow: visible!important;
+  overflow: visible;
   bottom: 0;
 }
 
@@ -12,7 +12,7 @@
   width: 33%;
   position: absolute;
   text-align: center;
-  overflow: visible!important;
+  overflow: visible;
 }
 
 .wrapper .cell:nth-child(1) {
@@ -24,7 +24,7 @@
   background: #00000000;
   top: 50%;
   transform: translateY(-50%);
-  overflow: visible!important;
+  overflow: visible;
 }
 
 .wrapper .cell:nth-child(3) {
@@ -48,7 +48,7 @@
   top: 0%;            /* check the height of the parent when the top attribute doesn't work. */
   width: 55%;
   margin: 0 auto;
-  overflow: visible!important;
+  overflow: visible;
 }
 
 .popup {
@@ -73,6 +73,17 @@
   text-align: center;
 }
 
+.single-cell {
+  width: 50%;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.cell-text {
+  font-size: .8em;
+}
+
 .popup .popup-cell:nth-child(1) {
   left: 0%;
 }
@@ -90,7 +101,7 @@
 }
 
 .bottom-cell {
-  width: 5%;
+  width: 4%;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "课程详情",
+  "usingComponents": {
+    "i-icon": "/style/icon/index",
+    "i-button": "/style/button/index"
+  }
+}

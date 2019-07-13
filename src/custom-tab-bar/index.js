@@ -7,6 +7,7 @@ wx.getSystemInfo({
 Component({
   data: {
     selected: 1,
+    identity: 1,      /* 1 for the student tutor. */
     post_style: {},
     tab_style: {},
     pop_style: {},
@@ -14,12 +15,12 @@ Component({
     icon: [
       '/static/tabs/home.png',
       '/static/images/user.png',
-      '/static/tabs/orders.png'
+      '/static/tabs/account.png'
     ],
     icon_selected: [
       '/static/tabs/home-active.png',
       '/static/images/user.png',
-      '/static/tabs/orders-active.png'
+      '/static/tabs/account-active.png'
     ]
   },
   methods: {
@@ -53,6 +54,20 @@ Component({
       this.setData({
         close_style: 'transform: rotate(180);transition: 0.1s',
         pop_style: 'transform: translateY(0);transition: 0.5s'
+      })
+    },
+    questioning: function () {
+      console.log('i am about to ask a question. ')
+      if(this.data.identity) {
+        this.setData({ identity: 0 })
+      } else {
+        this.setData({ identity: 1 })
+      }
+    },
+    posting: function () {
+      console.log('i am about to post a new course. ')
+      wx.navigateTo({
+        url: '/pages/post/main'
       })
     }
   }

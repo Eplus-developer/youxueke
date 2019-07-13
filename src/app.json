@@ -3,10 +3,13 @@
     "pages/index/main",
     "pages/logs/main",
     "pages/counter/main",
-    "pages/home/main"
+    "pages/home/main",
+    "pages/course/main",
+    "pages/book-successful/main",
+    "pages/post/main"
   ],
   "window": {
-    "backgroundColor": "#6d6d6d",
+    "backgroundColor": "#f6f6f6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
@@ -27,8 +30,8 @@
     }, {
       "text": "个人中心",
       "pagePath": "pages/home/main",
-      "iconPath": "static/tabs/orders.png",
-      "selectedIconPath": "static/tabs/orders-active.png"
+      "iconPath": "static/tabs/account.png",
+      "selectedIconPath": "static/tabs/account-active.png"
     }],
 
     "position": "bottom",

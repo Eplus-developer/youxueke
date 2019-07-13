@@ -13,13 +13,17 @@
 </cover-view>
 <cover-view class='popup' style='{{pop_style}}'>
   <cover-view class='middle-wrapper'>
-    <cover-view class='popup-cell'>
-      <cover-image src='/static/icons/question.png' class='popup-icon'></cover-image>
-      <cover-view>提问</cover-view>
+    <cover-view class='popup-cell' wx:if='{{identity}}'>
+      <cover-image src='/static/icons/question.png' class='popup-icon' bindtap='questioning'></cover-image>
+      <cover-view class='cell-text'>提问题</cover-view>
     </cover-view>
-    <cover-view class='popup-cell'>
-      <cover-image src='/static/icons/post.png' class='popup-icon'></cover-image>
-      <cover-view>发布</cover-view>
+    <cover-view class='popup-cell' wx:if='{{identity}}'>
+      <cover-image src='/static/icons/post.png' class='popup-icon' bindtap='posting'></cover-image>
+      <cover-view class='cell-text'>发布课程</cover-view>
+    </cover-view>
+    <cover-view class='single-cell' wx:else>
+      <cover-image src='/static/icons/question.png' class='popup-icon' bindtap='questioning'></cover-image>
+      <cover-view class='cell-text'>提问题</cover-view>
     </cover-view>
   </cover-view>
   <cover-view class='bottom-cell'>
