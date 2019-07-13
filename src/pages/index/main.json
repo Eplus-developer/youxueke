@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-icon": "/style/icon/index",
+    "i-tabs": "/style/tabs/index",
+    "i-tab": "/style/tab/index"
+  }
+}

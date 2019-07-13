@@ -1,7 +1,6 @@
 let post_animation = wx.createAnimation({
   timingFunction: 'ease'
 })
-
 let tab_animation = wx.createAnimation({
   timingFunction: 'ease'
 })
@@ -13,7 +12,6 @@ let pop_animation = wx.createAnimation({
 let close_animation = wx.createAnimation({
   timingFunction: 'ease'
 })
-
 Component({
   data: {
     selected: 1,
@@ -60,4 +58,4 @@ Component({
       this.setData({ pop_animation: pop_animation.export() })
     }
   }
-});
+})
