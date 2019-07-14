@@ -6,10 +6,13 @@
     "pages/home/main",
     "pages/course/main",
     "pages/book-successful/main",
-    "pages/post/main"
+    "pages/post/main",
+    "pages/post-successful/main",
+    "pages/exercise/main",
+    "pages/question/main"
   ],
   "window": {
-    "backgroundColor": "#f6f6f6",
+    "backgroundColor": "#e8e8e8",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",

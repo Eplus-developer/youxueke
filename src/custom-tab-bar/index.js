@@ -3,6 +3,7 @@ wx.getSystemInfo({
     console.log(res.SDKVersion)
   },
 })
+
 Component({
   data: {
     selected: 1,
@@ -57,11 +58,9 @@ Component({
     },
     questioning: function () {
       console.log('i am about to ask a question. ')
-      if(this.data.identity) {
-        this.setData({ identity: 0 })
-      } else {
-        this.setData({ identity: 1 })
-      }
+      wx.navigateTo({
+        url: '/pages/question/main'
+      })
     },
     posting: function () {
       console.log('i am about to post a new course. ')
@@ -70,4 +69,4 @@ Component({
       })
     }
   }
-})
+});

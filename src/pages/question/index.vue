@@ -3,27 +3,17 @@
     <div class="cell-group">
       <div class="cell">
         <img src="/static/icons/post/course-name.png" alt="didn't see me! ">
-        <div>课程名称</div>
-        <input type="text" placeholder="请输入课程名称" v-model="courseName">
-      </div>
-      <div class="cell">
-        <img src="/static/icons/post/teacher.png" alt="didn't see me! ">
-        <div>主讲人</div>
-        <input type="text" placeholder="请输入主讲人" v-model="lecturer">
-      </div>
-      <div class="cell">
-        <img src="/static/icons/post/phone-number.png" alt="didn't see me! ">
-        <div>手机号码</div>
-        <input type="number" placeholder="请输入手机号码" v-model="phoneNumber">
+        <div>标题</div>
+        <input type="text" placeholder="请输入标题" v-model="questionTitle">
       </div>
       <div class="cell">
         <img src="/static/icons/post/introduction.png" alt="didn't see me! ">
-        <div>课程简介</div>
-        <input type="text" placeholder="请输入课程简单并上传图片" v-model="phoneNumber">
+        <div>问题简介</div>
+        <input type="text" placeholder="请输入课程简单并上传图片" v-model="questionIntroduction">
       </div>
     </div>
     <image :src="imagePath" class="upload" mode="widthFix" @click="uploadImage"></image>
-    <i-button class="bottom-large" type="success" shape="circle" @click="post_course">发布课程</i-button>
+    <i-button class="bottom-large" type="success" shape="circle" @click="post_question">发布问题</i-button>
   </div>
 </template>
 
@@ -32,14 +22,13 @@
     name: 'index',
     data () {
       return {
-        courseName: '',
-        lecturer: '',
-        phoneNumber: '',
+        questionTitle: '',
+        questionIntroduction: '',
         imagePath: '/static/icons/post/image.png'
       }
     },
     methods: {
-      post_course () {
+      post_question () {
         wx.navigateTo({
           url: '/pages/post-successful/main'
         })

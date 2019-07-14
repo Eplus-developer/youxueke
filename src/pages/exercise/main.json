@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "练习",
+  "usingComponents": {
+    "i-icon": "/style/icon/index",
+    "i-button": "/style/button/index",
+    "i-progress": "/style/progress/index"
+  }
+}
