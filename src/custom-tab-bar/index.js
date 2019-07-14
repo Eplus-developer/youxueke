@@ -3,7 +3,6 @@ wx.getSystemInfo({
     console.log(res.SDKVersion)
   },
 })
-
 Component({
   data: {
     selected: 1,
@@ -71,4 +70,4 @@ Component({
       })
     }
   }
-});
+})
