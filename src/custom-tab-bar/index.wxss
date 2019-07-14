@@ -1,17 +1,18 @@
 .wrapper {
-  position: relative;
+  position: fixed;
   width: 100%;
   height: 150rpx;
   background: #fff;
   border-top: #2f2f2f2f solid .05em;
-  z-index: 200;
   overflow: visible;
+  bottom: 0;
 }
 
 .cell {
   width: 33%;
   position: absolute;
   text-align: center;
+  overflow: visible;
 }
 
 .wrapper .cell:nth-child(1) {
@@ -20,8 +21,10 @@
 
 .wrapper .cell:nth-child(2) {
   left: 33%;
-  top: -30%;
   background: #00000000;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: visible;
 }
 
 .wrapper .cell:nth-child(3) {
@@ -41,24 +44,44 @@
 }
 
 .center-button {
+  position: relative;
+  top: 0%;            /* check the height of the parent when the top attribute doesn't work. */
   width: 55%;
   margin: 0 auto;
+  overflow: visible;
 }
 
 .popup {
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 250rpx;
   background: #fff;
-  z-index: 300;
   overflow: visible;
   bottom: -250rpx;
+  /* transform: translateY(-250rpx); */
+}
+
+.middle-wrapper {
+  width: 100%;
+  height: 80%;          /* if not set, the two icon won't show up. */
+  position: relative;
 }
 
 .popup-cell {
   width: 50%;
   position: absolute;
   text-align: center;
+}
+
+.single-cell {
+  width: 50%;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.cell-text {
+  font-size: .8em;
 }
 
 .popup .popup-cell:nth-child(1) {
@@ -78,7 +101,7 @@
 }
 
 .bottom-cell {
-  width: 5%;
+  width: 4%;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);

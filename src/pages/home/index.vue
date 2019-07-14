@@ -2,7 +2,7 @@
   <div class="outer-most">
     <profile></profile>
     <i-cell-group>
-      <i-cell v-for="item in options" :title="item.title" :key="item.title" is-link url="">
+      <i-cell v-for="item in options" :title="item.title" :key="item.title" is-link url="/pages/course/main">
         <i-icon type="like_fill" slot="icon"/>
       </i-cell>
     </i-cell-group>
@@ -11,6 +11,7 @@
 
 <script>
   import profile from '@/components/profile'
+  import store from '@/store'
 
   export default {
     name: 'Home',
@@ -27,6 +28,7 @@
     },
     onShow () {
       this.$root.$mp.page.getTabBar().setData({selected: 3})
+      store.commit('request_login')
     }
   }
 </script>

@@ -1,33 +1,25 @@
-let post_animation = wx.createAnimation({
-  timingFunction: 'ease'
-})
-let tab_animation = wx.createAnimation({
-  timingFunction: 'ease'
-})
-
-let pop_animation = wx.createAnimation({
-  timingFunction: 'ease'
-})
-
-let close_animation = wx.createAnimation({
-  timingFunction: 'ease'
+wx.getSystemInfo({
+  success: function(res) {
+    console.log(res.SDKVersion)
+  },
 })
 Component({
   data: {
     selected: 1,
-    post_animation: {},
-    tab_animation: {},
-    pop_animation: {},
-    close_animation: {},
+    identity: 1,      /* 1 for the student tutor. */
+    post_style: {},
+    tab_style: {},
+    pop_style: {},
+    close_style: {},
     icon: [
       '/static/tabs/home.png',
       '/static/images/user.png',
-      '/static/tabs/orders.png'
+      '/static/tabs/account.png'
     ],
     icon_selected: [
       '/static/tabs/home-active.png',
       '/static/images/user.png',
-      '/static/tabs/orders-active.png'
+      '/static/tabs/account-active.png'
     ]
   },
   methods: {
@@ -42,20 +34,40 @@ Component({
       })
     },
     post: function () {
-      post_animation.scale(0.6).step({duration: 200})
-      post_animation.scale(1.0).step({duration: 100})
-      this.setData({post_animation: post_animation.export()})
+      this.setData({
+        post_style: 'transform: scale(0.5);transition: 0.3s'
+      })
       setTimeout(function () {
-        pop_animation.bottom('0rpx').step({duration: 700})
-        this.setData({pop_animation: pop_animation.export()})
+        this.setData({
+          post_style: 'transform: scale(1.0);transition: 0.1s'
+        })
       }.bind(this), 300)
+      setTimeout(function () {
+        this.setData({
+          /* set the bottom attribute doesn't work in the real phone due to the performance problem. same as the wx.createAnimation method. */
+          pop_style: 'transform: translateY(-250rpx);transition: 0.5s'
+        })
+      }.bind(this), 500)
     },
     collapse: function () {
-      close_animation.rotate(180).step({duration: 1000})
-      close_animation.rotate(-180).step({ duration: 1000 })
-      this.setData({close_animation: close_animation.export()})
-      pop_animation.bottom('-250rpx').step({ duration: 1000 })
-      this.setData({ pop_animation: pop_animation.export() })
+      this.setData({
+        close_style: 'transform: rotate(180);transition: 0.1s',
+        pop_style: 'transform: translateY(0);transition: 0.5s'
+      })
+    },
+    questioning: function () {
+      console.log('i am about to ask a question. ')
+      if(this.data.identity) {
+        this.setData({ identity: 0 })
+      } else {
+        this.setData({ identity: 1 })
+      }
+    },
+    posting: function () {
+      console.log('i am about to post a new course. ')
+      wx.navigateTo({
+        url: '/pages/post/main'
+      })
     }
   }
 })
