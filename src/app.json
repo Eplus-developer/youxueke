@@ -38,6 +38,8 @@
     }],
 
     "position": "bottom",
-    "usingComponents": {}
+    "usingComponents": {
+      "i-icon": "/style/icon/index"
+    }
   }
 }
