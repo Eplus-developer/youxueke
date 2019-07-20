@@ -17,25 +17,40 @@
         <input type="number" placeholder="请输入手机号码" v-model="phoneNumber">
       </div>
       <div class="cell">
+        <div>上课日期</div>
+        <div class="input">
+          <picker mode="date" :value="date" @change="dateChange" start="2018-01-01" end="2022-01-01">
+            {{ date }}
+          </picker>
+        </div>
+      </div>
+      <div class="cell">
         <img src="/static/icons/post/introduction.png" alt="didn't see me! ">
         <div>课程简介</div>
-        <input type="text" placeholder="请输入课程简单并上传图片" v-model="phoneNumber">
+        <input type="text" placeholder="请输入课程简单并上传图片" v-model="introduction">
       </div>
     </div>
-    <image :src="imagePath" class="upload" mode="widthFix" @click="uploadImage"></image>
+    <div class="upload">
+      <upload @image-changed="uploadImage"></upload>
+    </div>
     <i-button class="bottom-large" type="success" shape="circle" @click="post_course">发布课程</i-button>
   </div>
 </template>
 
 <script>
+  import upload from '@/components/upload'
+
   export default {
     name: 'index',
+    components: {upload},
     data () {
       return {
         courseName: '',
         lecturer: '',
         phoneNumber: '',
-        imagePath: '/static/icons/post/image.png'
+        imagePath: '',
+        introduction: '',
+        date: '2019-01-01'
       }
     },
     methods: {
@@ -44,14 +59,11 @@
           url: '/pages/post-successful/main'
         })
       },
-      uploadImage () {
-        let that = this
-        wx.chooseImage({
-          count: 1,
-          success (res) {
-            that.imagePath = res.tempFilePaths[0]
-          }
-        })
+      uploadImage (url) {
+        this.url = url
+      },
+      dateChange (e) {
+        this.date = e.target.value
       }
     }
   }
@@ -105,7 +117,7 @@
     transform: translateY(-50%);
   }
 
-  .cell input {
+  .cell input, .cell .input {
     display: block;
     position: relative;
     left: 8em;

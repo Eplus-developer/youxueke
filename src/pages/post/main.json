@@ -4,6 +4,7 @@
     "i-cell-group": "/style/cell-group/index",
     "i-icon": "/style/icon/index",
     "i-button": "/style/button/index",
-    "i-cell": "/style/cell/index"
+    "i-cell": "/style/cell/index",
+    "wux-icon": "/wux-style/icon/index"
   }
 }
