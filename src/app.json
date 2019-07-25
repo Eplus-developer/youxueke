@@ -9,7 +9,8 @@
     "pages/post/main",
     "pages/post-successful/main",
     "pages/exercise/main",
-    "pages/question/main"
+    "pages/question/main",
+    "pages/dynamicDetail/main"
   ],
   "window": {
     "backgroundColor": "#e8e8e8",
@@ -22,7 +23,7 @@
     "custom": true,
     "color": "#999",
     "backgroundColor": "#fafafa",
-    "selectedColor": "#333",
+    "selectedColor": "#2ECC71",
     "borderStyle": "white",
 
     "list": [{
@@ -39,7 +40,6 @@
 
     "position": "bottom",
     "usingComponents": {
-      "i-icon": "/style/icon/index"
     }
   }
 }

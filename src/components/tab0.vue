@@ -1,13 +1,12 @@
 <template>
-  <div style="background: #fff">{{msg}}</div>
+  <div class="ub-box ub-col">
+   <dynamic></dynamic>
+  </div>
 </template>
 <script>
+  import dynamic from './dynamic.vue'
   export default{
-    data () {
-      return {
-        msg: 'skjhf'
-      }
-    }
+    components: {dynamic}
   }
 </script>
 <style scoped>
