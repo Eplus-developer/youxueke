@@ -41,6 +41,11 @@
 
 .path-text {
   font-size: .8em;
+  color: #515151;
+}
+.selected-text {
+  font-size: .8em;
+  color: #2ECC71;
 }
 
 .center-button {
@@ -82,6 +87,7 @@
 
 .cell-text {
   font-size: .8em;
+  color: #515151;
 }
 
 .popup .popup-cell:nth-child(1) {
