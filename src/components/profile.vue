@@ -5,7 +5,7 @@
       <p class="user-name">蔡博士</p>
       <p class="profile">我是练习时长两天半的个人学习生</p>
     </div>
-    <div class="calendar">
+    <div class="calendar" @click.stop="exerciseLog">
       <img src="/static/icons/calendar.png" alt="you didn't see me! " class="calendar-icon">
     </div>
   </div>
@@ -13,7 +13,14 @@
 
 <script>
   export default {
-    props: []
+    props: [],
+    methods: {
+      exerciseLog () {
+        wx.navigateTo({
+          url: '/pages/exercise-log/main'
+        })
+      }
+    }
   }
 </script>
 

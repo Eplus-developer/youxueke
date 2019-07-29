@@ -4,6 +4,7 @@
     "pages/logs/main",
     "pages/counter/main",
     "pages/home/main",
+    "pages/exercise-log/main",
     "pages/course/main",
     "pages/book-successful/main",
     "pages/post/main",
