@@ -5,6 +5,8 @@
     "i-icon": "/style/icon/index",
     "i-cell-group":"/style/cell-group/index",
     "i-cell": "/style/cell/index",
-    "i-panel": "/style/panel/index"
+    "i-panel": "/style/panel/index",
+    "wux-button": "/static/wux-style/button/index",
+    "wux-dialog": "/static/wux-style/dialog/index"
   }
 }

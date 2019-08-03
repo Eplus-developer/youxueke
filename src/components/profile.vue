@@ -2,7 +2,7 @@
   <div class="person-info">
     <img src="/static/images/user.png" alt="you didn't see me! " class="avatar">
     <div class="profile-wrapper">
-      <p class="user-name">蔡博士</p>
+      <p class="user-name">{{ name }}</p>
       <p class="profile">我是练习时长两天半的个人学习生</p>
     </div>
     <div class="calendar" @click.stop="exerciseLog">
@@ -13,7 +13,9 @@
 
 <script>
   export default {
-    props: [],
+    props: {
+      name: String
+    },
     methods: {
       exerciseLog () {
         wx.navigateTo({

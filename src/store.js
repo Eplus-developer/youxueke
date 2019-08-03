@@ -6,16 +6,18 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-  login_state: false
+  loginState: false,
+  id: '',
+  identity: 0,
+  name: ''
 }
 
 const mutations = {
-  REQUEST_LOGIN_CODE () {
-    wx.login({
-      success (res) {
-        console.log(res.code)
-      }
-    })
+  LOG_IN (state, {identity, id, name}) {
+    state.identity = identity
+    state.id = id
+    state.loginState = true
+    state.name = name
   }
 }
 

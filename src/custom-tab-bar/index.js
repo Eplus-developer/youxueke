@@ -1,13 +1,13 @@
 wx.getSystemInfo({
-  success: function(res) {
+  success: function (res) {
     console.log(res.SDKVersion)
-  },
+  }
 })
 
 Component({
   data: {
     selected: 1,
-    identity: 1,      /* 1 for the student tutor. */
+    identity: 1,      /* 2 for the student tutor. */
     post_style: {},
     tab_style: {},
     pop_style: {},
@@ -26,12 +26,12 @@ Component({
   methods: {
     left: function () {
       wx.switchTab({
-        url: '/pages/index/main',
+        url: '/pages/index/main'
       })
     },
     right: function () {
       wx.switchTab({
-        url: '/pages/home/main',
+        url: '/pages/home/main'
       })
     },
     post: function () {
@@ -69,4 +69,4 @@ Component({
       })
     }
   }
-});
+})

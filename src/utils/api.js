@@ -19,9 +19,10 @@ const apiBase = (url, params) => {
 
 /**
  * url: /login
+ * identity: 0 for unregistered, 1 for student, 2 for teacher.
  * @param {Object} params
- * @param {String} params.code
- * @returns {Promise<{data: {identity: number, stuId: String}}>}
+ * @param {String} params.code the code returned by weixin.
+ * @returns {Promise<{data: {identity: number, id: number, name: String}}>}
  */
 export const requestLogin = params => {
   return apiBase('/login', params)
