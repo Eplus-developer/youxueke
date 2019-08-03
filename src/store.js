@@ -5,19 +5,29 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
-  state: {
-    login_state: false
-  },
-  mutations: {
-    request_login () {
-      wx.login({
-        success (res) {
-          console.log(res.code)
-        }
-      })
-    }
+const state = {
+  login_state: false
+}
+
+const mutations = {
+  REQUEST_LOGIN_CODE () {
+    wx.login({
+      success (res) {
+        console.log(res.code)
+      }
+    })
   }
+}
+
+const getters = {}
+
+const actions = {}
+
+const store = new Vuex.Store({
+  state,
+  mutations,
+  getters,
+  actions
 })
 
 export default store
