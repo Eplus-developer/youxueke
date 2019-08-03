@@ -4,12 +4,14 @@
     "pages/logs/main",
     "pages/counter/main",
     "pages/home/main",
+    "pages/exercise-log/main",
     "pages/course/main",
     "pages/book-successful/main",
     "pages/post/main",
     "pages/post-successful/main",
     "pages/exercise/main",
-    "pages/question/main"
+    "pages/question/main",
+    "pages/dynamicDetail/main"
   ],
   "window": {
     "backgroundColor": "#e8e8e8",
@@ -20,9 +22,9 @@
   },
   "tabBar": {
     "custom": true,
-    "color": "#999",
+    "color": "#515151",
     "backgroundColor": "#fafafa",
-    "selectedColor": "#333",
+    "selectedColor": "#2ECC71",
     "borderStyle": "white",
 
     "list": [{
@@ -39,7 +41,6 @@
 
     "position": "bottom",
     "usingComponents": {
-      "i-icon": "/style/icon/index"
     }
   }
 }

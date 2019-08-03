@@ -1,7 +1,7 @@
 <template>
   <div class="ub-box ub-col">
     <Calendar :value="date" week-switch="true"></Calendar>
-    <div class="ub-box ub-col z-margin-top-10-px">
+    <div class="ub-box ub-col z-margin-top-0-px">
       <course1></course1>
       <course1></course1>
     </div>

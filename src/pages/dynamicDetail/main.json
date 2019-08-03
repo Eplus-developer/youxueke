@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "详情",
+  "usingComponents": {
+    "i-avatar": "/style/avatar/index",
+    "i-icon": "/style/icon/index"
+  }
+}

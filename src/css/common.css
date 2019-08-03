@@ -189,6 +189,7 @@ i {font-style: normal;}
 .z-margin-top-5-px{margin-top:calc(5px);}
 .z-margin-top-4-px{margin-top:calc(4px);}
 .z-margin-top-3-px{margin-top:calc(3px);}
+.z-margin-top-0-px{margin-top:calc(0px);}
 .z-margin-bottom-40-px{margin-bottom:calc(40px);}
 .z-margin-bottom-30-px{margin-bottom:calc(30px);}
 .z-margin-bottom-25-px{margin-bottom:calc(25px);}
@@ -201,6 +202,7 @@ i {font-style: normal;}
 .z-margin-bottom-5-px{margin-bottom:calc(5px);} 
 .z-margin-bottom-3-px{margin-bottom:calc(3px);}
 .z-margin-bottom-1-px{margin-bottom:calc(1px);}
+.z-margin-bottom-0-px{margin-bottom:calc(0px);}
 .z-margin-all-auto{margin: auto;}
 /*********通用padding**********/
 .z-padding-all-0{padding:0;}
@@ -410,6 +412,8 @@ i {font-style: normal;}
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
+  padding-right: 4em;
+  text-indent:5%
 }
 .z-lines-1-overflow-hidden{
 	overflow: hidden;
@@ -440,6 +444,7 @@ i {font-style: normal;}
 .z-color-1bc6bf{color:#1bc6bf;}
 .z-color-red{color:#ff0000;}
 .z-color-main{color: #2ECC71}
+.z-color-353535{color: #353535}
 /**********通用背景颜色*************/
 .z-bg-color-000{background-color: #000}
 .z-bg-color-333{background-color: #333}

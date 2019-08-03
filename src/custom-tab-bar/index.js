@@ -14,12 +14,12 @@ Component({
     close_style: {},
     icon: [
       '/static/tabs/home.png',
-      '/static/images/user.png',
+      '/static/tabs/pluse.png',
       '/static/tabs/account.png'
     ],
     icon_selected: [
       '/static/tabs/home-active.png',
-      '/static/images/user.png',
+      '/static/tabs/pluse.png',
       '/static/tabs/account-active.png'
     ]
   },
