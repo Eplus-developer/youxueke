@@ -5,6 +5,6 @@
     "i-icon": "/style/icon/index",
     "i-button": "/style/button/index",
     "i-cell": "/style/cell/index",
-    "wux-icon": "/wux-style/icon/index"
+    "wux-icon": "/static/wux-style/icon/index"
   }
 }

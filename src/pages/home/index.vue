@@ -61,7 +61,6 @@
                       name: res.data.name
                     })
                     if (res.data.identity === 1) {
-                      console.log('hit')
                       that.$root.$mp.page.getTabBar().setData({identity: 1})
                     } else {
                       that.$root.$mp.page.getTabBar().setData({identity: 2})
@@ -72,6 +71,9 @@
                     }
                   }
                 })
+            },
+            fail (error) {
+              console.log(error)
             }
           })
         }

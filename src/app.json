@@ -11,7 +11,8 @@
     "pages/post-successful/main",
     "pages/exercise/main",
     "pages/question/main",
-    "pages/dynamicDetail/main"
+    "pages/dynamicDetail/main",
+    "pages/exercise-catalog/main"
   ],
   "window": {
     "backgroundColor": "#e8e8e8",

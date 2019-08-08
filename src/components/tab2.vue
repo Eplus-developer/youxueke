@@ -25,13 +25,13 @@
     methods: {
       exercise () {
         wx.navigateTo({
-          url: '/pages/exercise/main'
+          url: '/pages/exercise-catalog/main'
         })
       }
     }
   }
 </script>
-<style>
+<style scoped>
   .course{
     background-color: #fff;
     border-radius: 10px;

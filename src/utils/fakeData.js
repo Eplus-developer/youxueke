@@ -12,5 +12,5 @@ export const REQUEST_LOGIN_RESPONSE_STUDENT = {
 export const REQUEST_LOGIN_RESPONSE_TEACHER = {
   identity: 2,
   id: '10175101183',
-  name: '陈思妮'
+  name: '陈老师'
 }

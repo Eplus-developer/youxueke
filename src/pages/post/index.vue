@@ -2,21 +2,22 @@
   <div class="wrapper">
     <div class="cell-group">
       <div class="cell">
-        <img src="/static/icons/post/course-name.png" alt="didn't see me! ">
+        <wux-icon class="bullet" type="ios-clipboard" size="28" color="#33cd5f"></wux-icon>
         <div>课程名称</div>
         <input type="text" placeholder="请输入课程名称" v-model="courseName">
       </div>
       <div class="cell">
-        <img src="/static/icons/post/teacher.png" alt="didn't see me! ">
+        <wux-icon class="bullet" type="ios-contact" size="28" color="#33cd5f"></wux-icon>
         <div>主讲人</div>
         <input type="text" placeholder="请输入主讲人" v-model="lecturer">
       </div>
       <div class="cell">
-        <img src="/static/icons/post/phone-number.png" alt="didn't see me! ">
+        <wux-icon class="bullet" type="ios-phone-portrait" size="28" color="#33cd5f"></wux-icon>
         <div>手机号码</div>
         <input type="number" placeholder="请输入手机号码" v-model="phoneNumber">
       </div>
       <div class="cell">
+        <wux-icon class="bullet" type="ios-calendar" size="28" color="#33cd5f"></wux-icon>
         <div>上课日期</div>
         <div class="input">
           <picker mode="date" :value="date" @change="dateChange" start="2018-01-01" end="2022-01-01">
@@ -25,7 +26,7 @@
         </div>
       </div>
       <div class="cell">
-        <img src="/static/icons/post/introduction.png" alt="didn't see me! ">
+        <wux-icon class="bullet" type="ios-paper" size="28" color="#33cd5f"></wux-icon>
         <div>课程简介</div>
         <input type="text" placeholder="请输入课程简单并上传图片" v-model="introduction">
       </div>
@@ -102,7 +103,8 @@
     border-bottom: none;
   }
 
-  .cell img {
+  .cell .bullet {
+    text-align: center;
     width: 1.5em;
     height: 1.5em;
     position: absolute;

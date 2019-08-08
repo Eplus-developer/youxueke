@@ -4,5 +4,12 @@
     "i-icon": "/style/icon/index",
     "i-button": "/style/button/index",
     "i-progress": "/style/progress/index"
+  },
+  "window": {
+    "backgroundColor": "#e8e8e8",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
   }
 }
