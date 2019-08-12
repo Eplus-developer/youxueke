@@ -6,7 +6,7 @@ export const REQUEST_LOGIN_RESPONSE_UNREGISTERED = {
 export const REQUEST_LOGIN_RESPONSE_STUDENT = {
   identity: 1,
   id: '10175101259',
-  name: '吴平'
+  name: '吴同学'
 }
 
 export const REQUEST_LOGIN_RESPONSE_TEACHER = {

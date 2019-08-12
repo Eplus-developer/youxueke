@@ -48,7 +48,7 @@
       return {
         postinfo: {
           name: '张博士',
-          img: '../../static/images/1.jpg',
+          img: '/static/images/1.jpg',
           postData: '2019-08-30 19:30',
           questionTitle: '计算机网络',
           questionIntroduction: '计算机网络可敬的改货币三分是考试的女拉到就女网络可敬的改货币三分是考试的女拉的女拉到就女网络可敬的改货币三分是考试的女拉',

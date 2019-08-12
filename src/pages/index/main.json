@@ -1,13 +1,13 @@
 {
   "navigationBarTitleText": "首页",
   "usingComponents": {
-    "i-icon": "/style/icon/index",
-    "i-tabs": "/style/tabs/index",
-    "i-tab": "/style/tab/index",
-    "i-avatar": "/style/avatar/index",
-    "i-badge": "/style/badge/index",
-    "i-grid": "/style/grid/index",
-    "i-grid-item": "/style/grid-item/index",
-    "i-grid-icon": "/style/grid-icon/index"
+    "i-icon": "/static/iview-style/icon/index",
+    "i-tabs": "/static/iview-style/tabs/index",
+    "i-tab": "/static/iview-style/tab/index",
+    "i-avatar": "/static/iview-style/avatar/index",
+    "i-badge": "/static/iview-style/badge/index",
+    "i-grid": "/static/iview-style/grid/index",
+    "i-grid-item": "/static/iview-style/grid-item/index",
+    "i-grid-icon": "/static/iview-style/grid-icon/index"
   }
 }

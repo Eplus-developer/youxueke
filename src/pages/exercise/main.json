@@ -1,9 +1,10 @@
 {
   "navigationBarTitleText": "练习",
   "usingComponents": {
-    "i-icon": "/style/icon/index",
-    "i-button": "/style/button/index",
-    "i-progress": "/style/progress/index"
+    "i-icon": "/static/iview-style/icon/index",
+    "i-button": "/static/iview-style/button/index",
+    "wux-checkbox": "/static/wux-style/checkbox/index",
+    "wux-checkbox-group": "/static/wux-style/checkbox-group/index"
   },
   "window": {
     "backgroundColor": "#e8e8e8",
