@@ -3,7 +3,6 @@
   <scroll-view scroll-y scroll-top="10px">
   <div >
     <dynamic show-total= "show" show-exchange-button= "showButton"></dynamic>
-    kdfjihg
   </div>
   </scroll-view>
   <dl class="ub-box ub-ver-v z-padding-all-10-px bottom-box" style="background: #fff">

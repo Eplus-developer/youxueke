@@ -48,13 +48,13 @@
       return {
         postinfo: {
           name: '张博士',
-          img: '/static/images/1.jpg',
+          img: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1565625375&di=a32b00f8498aa62de689929c9b4f2ea4&src=http://pic.rmb.bdstatic.com/9966729617b883a1394d4e660a66dcfd.jpeg',
           postData: '2019-08-30 19:30',
           questionTitle: '计算机网络',
           questionIntroduction: '计算机网络可敬的改货币三分是考试的女拉到就女网络可敬的改货币三分是考试的女拉的女拉到就女网络可敬的改货币三分是考试的女拉',
           questionImg: [
-            {src: '../../static/images/1.jpg'},
-            {src: '../../static/images/1.jpg'}
+            {src: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1565625375&di=a32b00f8498aa62de689929c9b4f2ea4&src=http://pic.rmb.bdstatic.com/9966729617b883a1394d4e660a66dcfd.jpeg'},
+            {src: 'https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1565625375&di=a32b00f8498aa62de689929c9b4f2ea4&src=http://pic.rmb.bdstatic.com/9966729617b883a1394d4e660a66dcfd.jpeg'}
           ]
         },
         exchangeButton: true,

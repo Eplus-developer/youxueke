@@ -14,3 +14,7 @@ export const REQUEST_LOGIN_RESPONSE_TEACHER = {
   id: '10175101183',
   name: '陈老师'
 }
+
+export const REQUEST_REGISTER_RESPONSE_SUCCESSFUL = {
+  status: true
+}

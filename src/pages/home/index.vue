@@ -91,6 +91,20 @@
           placeholder: '请输入学号',
           onConfirm (e, response) {
             that.check(response)
+
+            wx.login({
+              success (res) {
+                utils.request({
+                  invoke: utils.api.requestRegister,
+                  params: {
+                    name: '123',
+                    'js_code': res.code,
+                    stuId: response
+                  },
+                  result: null
+                })
+              }
+            })
             that.checkLogin()
           }
         })

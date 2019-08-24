@@ -6,6 +6,6 @@ export const request = obj => {
       resolve({data: obj.result})
     )
   } else {
-    return obj.invoke()
+    return obj.invoke(obj.params)
   }
 }
