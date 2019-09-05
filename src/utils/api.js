@@ -89,7 +89,7 @@ export const requestCourseById = params => {
  * url: /course/findCourseByDate
  * @param {Object} params
  * @param {String} params.date
- * @returns {Promise<{status: String, Course: Course}>}
+ * @returns {Promise<{status: String, Course: Array<Course>}>}
  */
 export const requestCourseByDate = params => {
   return apiBase('/course/findCourseByDate', params)

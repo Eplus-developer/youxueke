@@ -118,6 +118,10 @@ let baseWebpackConfig = {
     }], {
       context: 'src/'
     }),
+    new CopyWebpackPlugin([{
+      from: path.resolve(__dirname, '../src/custom-tab-bar'),
+      to: path.resolve(config.build.assetsRoot, './custom-tab-bar')
+    }]),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),

@@ -1,0 +1,44 @@
+.cell-group {
+  width: 100%;
+  position: relative;
+  padding-left: 1em;
+}
+
+.cell {
+  width: 100%;
+  position: relative;
+  height: 2em;
+  padding: .5em 0;
+}
+
+.cell-group .cell {
+  border-bottom: solid rgba(47, 47, 47, 0.18) .07em;    /* note that hex representation sometimes doesn't work on real phone. */
+}
+
+.cell-group .cell:last-child {
+  border-bottom: none;
+}
+
+.cell .bullet {
+  text-align: center;
+  width: 1.5em;
+  height: 1.5em;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cell .cell-title {
+  position: absolute;
+  left: 2em;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cell input, .cell .input {
+  display: block;
+  position: relative;
+  left: 8em;
+  top: 50%;
+  transform: translateY(-50%);
+}

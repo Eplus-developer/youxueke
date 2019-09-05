@@ -12,7 +12,8 @@
     "pages/exercise/main",
     "pages/question/main",
     "pages/dynamicDetail/main",
-    "pages/exercise-catalog/main"
+    "pages/exercise-catalog/main",
+    "pages/course-list/main"
   ],
   "window": {
     "backgroundColor": "#e8e8e8",

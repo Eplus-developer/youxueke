@@ -1,6 +1,7 @@
 <template>
   <div class="outer-most">
     <wux-dialog id="wux-dialog"></wux-dialog>
+    <wux-toast id="wux-toast"></wux-toast>
     <profile :name="name"></profile>
     <i-cell-group>
       <i-cell v-for="item in options" :title="item.title" :key="item.title" is-link :url="item.url">
@@ -12,10 +13,11 @@
 
 <script>
   import profile from '@/components/profile'
-  import { $wuxDialog } from '@/../static/wux-style/index'
+  import { $wuxDialog, $wuxToast } from '@/../static/wux-style/index'
 
-  import store from '@/store'
+  import store from '@/store/'
   import utils from '@/utils'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'Home',
@@ -23,16 +25,17 @@
       profile
     },
     computed: {
-      name () {
-        return store.state.name
-      }
+      ...mapState({
+        name: state => state.name,
+        loginState: state => state.loginState
+      })
     },
     data () {
       return {
         options: [
           {title: '我参加的', url: '/pages/home/main'},
-          {title: '我发布的', url: '/pages/home/main'},
-          {title: '我预约的', url: '/pages/home/main'}
+          {title: '我提问的', url: '/pages/home/main'},
+          {title: '我预约的', url: '/pages/course-list/main?type=take-part'}
         ]
       }
     },
@@ -40,32 +43,32 @@
       checkLogin () {
         let that = this
 
-        if (!store.state.loginState) {
+        if (!this.loginState) {
           wx.login({
             success (res) {
               utils.request({
                 invoke: utils.api.requestLogin,
                 params: {
-                  code: res.code
+                  'js_code': res.code
                 },
                 result: utils.fakeData.REQUEST_LOGIN_RESPONSE_TEACHER
               })
                 .then(res => {
-                  if (res.data.identity === 0) {
+                  if (res.data.status === 'false') {
                     // TODO: the user need to register
                     that.register()
                   } else {
                     store.commit('LOG_IN', {
-                      identity: res.data.identity,
-                      id: res.data.id,
-                      name: res.data.name
+                      identity: res.data.userInfo.identity,
+                      id: res.data.userInfo.id,
+                      name: res.data.userInfo.name
                     })
-                    if (res.data.identity === 1) {
+                    if (res.data.userInfo.identity === 1) {
                       that.$root.$mp.page.getTabBar().setData({identity: 1})
                     } else {
                       that.$root.$mp.page.getTabBar().setData({identity: 2})
                       that.options.push(...[
-                        {title: '我提问的', url: '/pages/home/main'},
+                        {title: '我发布的', url: '/pages/course-list/main?type=post'},
                         {title: '待审批', url: '/pages/home/main'}
                       ])
                     }
@@ -89,29 +92,52 @@
           defaultText: '',
           maxlength: 11,
           placeholder: '请输入学号',
-          onConfirm (e, response) {
-            that.check(response)
-
-            wx.login({
-              success (res) {
-                utils.request({
-                  invoke: utils.api.requestRegister,
-                  params: {
-                    name: '123',
-                    'js_code': res.code,
-                    stuId: response
-                  },
-                  result: null
+          onConfirm (e, stuId) {
+            utils.check(stuId)
+            $wuxDialog().prompt({
+              resetOnClose: true,
+              title: '提示',
+              content: '请输入你的昵称',
+              fieldtype: 'String',
+              defaultText: '',
+              maxlength: 11,
+              placeholder: '请输入昵称',
+              onConfirm (e, nickname) {
+                wx.login({
+                  success (res) {
+                    utils.request({
+                      invoke: utils.api.requestRegister,
+                      params: {
+                        name: nickname,
+                        'js_code': res.code,
+                        stuId: stuId
+                      },
+                      result: utils.fakeData.REQUEST_REGISTER_RESPONSE_SUCCESSFUL
+                    })
+                      .then(res => {
+                        let type, text
+                        if (res.data === true) {
+                          type = 'success'
+                          text = '成功注册'
+                        } else {
+                          type = 'forbidden'
+                          text = '注册失败'
+                        }
+                        $wuxToast().show({
+                          type: type,
+                          duration: 1500,
+                          color: '#fff',
+                          text: text,
+                          success: () => console.log('fb')
+                        })
+                        that.checkLogin()
+                      })
+                  }
                 })
               }
             })
-            that.checkLogin()
           }
         })
-      },
-      check (id) {
-        // TODO check the validity of id
-        return true
       }
     },
     onShow () {

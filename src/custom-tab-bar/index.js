@@ -58,12 +58,14 @@ Component({
     },
     questioning: function () {
       console.log('i am about to ask a question. ')
+      this.collapse()
       wx.navigateTo({
         url: '/pages/question/main'
       })
     },
     posting: function () {
       console.log('i am about to post a new course. ')
+      this.collapse()
       wx.navigateTo({
         url: '/pages/post/main'
       })

@@ -5,6 +5,8 @@
     "i-icon": "/static/iview-style/icon/index",
     "i-button": "/static/iview-style/button/index",
     "i-cell": "/static/iview-style/cell/index",
-    "wux-icon": "/static/wux-style/icon/index"
+    "wux-icon": "/static/wux-style/icon/index",
+    "wux-button": "/static/wux-style/button/index",
+    "wux-toast": "/static/wux-style/toast/index"
   }
 }

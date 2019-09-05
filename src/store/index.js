@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 const state = {
   loginState: false,
-  id: '',
+  stuId: '',
   identity: 0,
   name: ''
 }
@@ -15,7 +15,7 @@ const state = {
 const mutations = {
   LOG_IN (state, {identity, id, name}) {
     state.identity = identity
-    state.id = id
+    state.stuId = id
     state.loginState = true
     state.name = name
   }

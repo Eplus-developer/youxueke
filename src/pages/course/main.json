@@ -2,6 +2,8 @@
   "navigationBarTitleText": "课程详情",
   "usingComponents": {
     "i-icon": "/static/iview-style/icon/index",
-    "i-button": "/static/iview-style/button/index"
+    "i-button": "/static/iview-style/button/index",
+    "wux-icon": "/static/wux-style/icon/index",
+    "wux-toast": "/static/wux-style/toast/index"
   }
 }
