@@ -52,6 +52,8 @@
                   'js_code': res.code
                 },
                 result: utils.fakeData.REQUEST_LOGIN_RESPONSE_TEACHER
+
+
               })
                 .then(res => {
                   if (res.data.status === 'false') {

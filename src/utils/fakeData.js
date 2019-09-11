@@ -106,3 +106,34 @@ export const GET_COURSE_LIST_BY_BOOKER = {
 }
 
 export const GET_COURSE_LIST_BY_DATE = GET_COURSE_LIST_BY_BOOKER
+
+export const DYNAMIC_LIST_DATA = {
+  status: 'true',
+  Topic: [
+    {
+      title: '计算机网络',
+      des: '的份上就互不干扰覅搜电脑版奥斯卡计划表GV为 安而后发 阿内入会费爱的何润锋',
+      author: '吴同学',
+      likes: 66,
+      replies: 88,
+      id: 0
+    },
+    {
+
+      title: '操作系统',
+      des: '的份上就互不干扰覅搜电脑版奥斯卡计划表GV为 安而后发 阿内入会费爱的何润锋',
+      author: '吴同学',
+      likes: 6,
+      replies: 8,
+      id: 1
+    },
+    {
+      title: '数据结构',
+      des: '的份上就互不干扰覅搜电脑版奥斯卡计划表GV为 安而后发 阿内入会费爱的何润锋',
+      author: '吴同学',
+      likes: 55,
+      replies: 66,
+      id: 2
+    }
+  ]
+}

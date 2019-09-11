@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/main",
     "pages/logs/main",
-    "pages/counter/main",
     "pages/home/main",
     "pages/exercise-log/main",
     "pages/course/main",
