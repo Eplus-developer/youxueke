@@ -1,9 +1,7 @@
 {
   "navigationBarTitleText": "提问",
   "usingComponents": {
-    "i-cell-group": "/static/iview-style/cell-group/index",
-    "i-icon": "/static/iview-style/icon/index",
     "i-button": "/static/iview-style/button/index",
-    "i-cell": "/static/iview-style/cell/index"
+    "wux-icon": "/static/wux-style/icon/index"
   }
 }
