@@ -9,7 +9,8 @@ const state = {
   loginState: false,
   stuId: '',
   identity: 0,
-  name: ''
+  name: '获取昵称中',
+  avatar: ''
 }
 
 const mutations = {
@@ -18,6 +19,10 @@ const mutations = {
     state.stuId = id
     state.loginState = true
     state.name = name
+  },
+  GET_USER_INFO (state, {nickname, avatar}) {
+    state.name = nickname
+    state.avatar = avatar
   }
 }
 
