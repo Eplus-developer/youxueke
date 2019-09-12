@@ -10,7 +10,7 @@
       <div class="cell">
         <wux-icon class="bullet" type="ios-contact" size="28" color="#33cd5f"></wux-icon>
         <div class="cell-title"><label for="lecturer">主讲人</label></div>
-        <input id="lecturer" type="text" placeholder="请输入主讲人学号" v-model="lecturer">
+        <input id="lecturer" type="text" placeholder="请输入主讲人姓名（请输入真实姓名）" v-model="lecturer">
       </div>
       <div class="cell">
         <wux-icon class="bullet" type="ios-phone-portrait" size="28" color="#33cd5f"></wux-icon>

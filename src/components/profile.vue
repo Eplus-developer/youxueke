@@ -1,6 +1,6 @@
 <template>
   <div class="person-info">
-    <img src="/static/images/user.png" alt="you didn't see me! " class="avatar">
+    <img :src="avatar" alt="you didn't see me! " class="avatar">
     <div class="profile-wrapper">
       <p class="user-name">{{ name }}</p>
       <p class="profile">我是练习时长两天半的个人学习生</p>
@@ -14,7 +14,8 @@
 <script>
   export default {
     props: {
-      name: String
+      name: String,
+      avatar: String
     },
     methods: {
       exerciseLog () {
