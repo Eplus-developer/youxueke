@@ -2,9 +2,7 @@
 // make sure to call Vue.use(Vuex) if using a module system
 import Vue from 'vue'
 import Vuex from 'vuex'
-
 Vue.use(Vuex)
-
 const state = {
   loginState: false,
   stuId: '',
@@ -28,7 +26,8 @@ const mutations = {
 
 const getters = {}
 
-const actions = {}
+const actions = {
+}
 
 const store = new Vuex.Store({
   state,
@@ -36,5 +35,4 @@ const store = new Vuex.Store({
   getters,
   actions
 })
-
 export default store

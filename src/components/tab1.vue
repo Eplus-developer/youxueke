@@ -48,6 +48,7 @@
             this.courseList = []
             this.courseList.push(...res.data.Course)
           }.bind(this))
+        console.log(this.courseList)
       }
     },
     mounted () {
