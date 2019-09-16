@@ -17,7 +17,7 @@ export const routeGuard = async function () {
         })
           .then(res => {
             if (res.data.status === 'false') {
-              register(resolve)
+              register.apply(that, resolve)
             } else {
               resolve(res.data.userInfo.identity)
               that.$store.commit('LOG_IN', {
@@ -41,6 +41,8 @@ export const routeGuard = async function () {
 }
 
 function register (resolve) {
+  let that = this
+
   $wuxDialog().prompt({
     resetOnClose: true,
     title: '提示',
@@ -56,7 +58,7 @@ function register (resolve) {
           utils.request({
             invoke: utils.api.requestRegister,
             params: {
-              name: this.$store.state.name,
+              name: that.$store.state.name,
               'js_code': res.code,
               stuId: stuId
             },

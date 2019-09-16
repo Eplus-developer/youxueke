@@ -1,24 +1,31 @@
 <template>
   <div class="ub-box ub-col">
-   <dynamicList v-for="item in dynamicData" :key="item.id"
-   :title="item.title"
-   :des="item.des"
-   :author="item.author"
-   :likes="item.likes"
-   :replies="item.replies"></dynamicList>
+    <dynamic-list
+      v-for="item in dynamicData"
+      :key="item.id"
+      :title="item.title"
+      :des="item.des"
+      :author="item.author"
+      :likes="item.likes"
+      :replies="item.replies">
+    </dynamic-list>
   </div>
 </template>
+
 <script>
   import dynamicList from './dynamic.vue'
   import utils from '@/utils'
-  export default{
-    components: {dynamicList},
+
+  export default {
+    name: 'tab0',
+    components: { dynamicList },
     data () {
       return {
         dynamicData: []
       }
     },
     mounted () {
+      console.log('mounted')
       utils.request({
         invoke: utils.api.requestTopicList,
         params: {},
@@ -31,5 +38,6 @@
     }
   }
 </script>
+
 <style scoped>
 </style>
