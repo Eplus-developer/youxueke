@@ -8,7 +8,8 @@ const state = {
   stuId: '',
   identity: 0,
   name: '获取昵称中',
-  avatar: ''
+  avatar: '',
+  dynamicData: []
 }
 
 const mutations = {
@@ -21,14 +22,17 @@ const mutations = {
   GET_USER_INFO (state, {nickname, avatar}) {
     state.name = nickname
     state.avatar = avatar
+  },
+  TOPIC_LIST (state, {dynamicData}) {
+    state.dynamicData = dynamicData.slice()
+    console.log(state)
+  },
+  LIKE_CHANGE (state, {index, num}) {
+    state.dynamicData[index].likes = num
   }
 }
-
 const getters = {}
-
-const actions = {
-}
-
+const actions = {}
 const store = new Vuex.Store({
   state,
   mutations,

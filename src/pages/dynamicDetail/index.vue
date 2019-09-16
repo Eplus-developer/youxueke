@@ -1,30 +1,112 @@
 <template>
 <div class="ub-box ub-col container3 " >
   <scroll-view scroll-y scroll-top="10px">
-  <div >
-    <dynamic show-total= "show" show-exchange-button= "showButton"></dynamic>
-  </div>
+    <div class="ub-box ub-col z-padding-all-10-px z-border-bottom-1-eee " style="background: #fff">
+      <div class="ub-box ub-row">
+        <i-avatar :src="avatar" size="default"></i-avatar>
+        <div class="ub-box ub-col z-margin-left-10-px">
+          <p class="z-font-size-14 z-color-000 z-margin-bottom-3-px">{{detailData.author}}</p>
+          <p class="z-font-size-12 z-color-666"> {{date}}</p>
+          <div class="ub-box ub-col z-margin-top-10-px" @click.stop="question">
+            <p class="title z-color-000 z-font-size-15 z-margin-bottom-5-px">{{detailData.title}}</p>
+            <span class=" des z-font-size-14 z-color-353535">
+          {{detailData.des}}
+      </span>
+          </div>
+        </div>
+      </div>
+      <div class="ub-box ub-wrap z-padding-v-5-px ub-ver  z-margin-top-5-px">
+        <img :src="detail_img" class="z-img-cover img" alt="">
+      </div>
+      <div class="ub-box ub-row  ub-end z-margin-top-5-px z-margin-right-15-px">
+        <div class="zan ub-box ub-row " @click.stop="like">
+          <img v-if="!isLike" class="likeimg1" src="/static/icons/zan0.png">
+          <img v-else class="likeimg2" src="/static/icons/zan1.png">
+          <p v-if="detailData.likes" class="z-color-666 z-font-size-12 num"> {{detailData.likes}}</p>
+        </div>
+        <div class="comment ub-box ub-row" @click.stop="comment1">
+          <img src="/static/icons/comment.png" class="icon">
+          <p v-if="detailData.replies" class="z-color-666 z-font-size-12 num"> {{detailData.replies}}</p>
+        </div>
+      </div>
+    </div>
   </scroll-view>
   <dl class="ub-box ub-ver-v z-padding-all-10-px bottom-box" style="background: #fff">
     <div @click.stop="pinglun" class="ping ub-box ub-ver-v z-width-80-percent ">
       <span class="z-font-size-14 z-color-999">评论...</span>
     </div>
-    <div class="z-margin-left-10-px">
-      <zan ></zan>
-    </div>
+    <div class="zan ub-box ub-row " @click.stop="like">
+      <img v-if="!isLike" class="likeimg1" src="/static/icons/zan0.png">
+      <img v-else class="likeimg2" src="/static/icons/zan1.png">
+</div>
   </dl>
 </div>
 </template>
 <script>
   import dynamic from '../../components/dynamic.vue'
   import zan from '../../components/zan.vue'
+  import {mapState} from 'vuex'
+  import store from '@/store'
   export default{
     components: {dynamic, zan},
     data () {
       return {
-        show: true,
-        showButton: true
+        detailData: {},
+        avatar: '/static/images/user.png',
+        date: '2019-10-01',
+        detail_img: '/static/images/banner.jpg',
+        isLike: false,
+        index: Number
       }
+    },
+    mounted () {
+      console.log(this)
+      this.detailData = this.dynamicData[this.$mp.query.index]
+      console.log(this.detailData)
+    },
+    computed: {
+      ...mapState(
+        {dynamicData: state => state.dynamicData}
+      )
+    },
+    methods: {
+      like () {
+        if (!this.isLike) {
+          this.isLike = !this.isLike
+          // this.detailData.likes = this.detailData.likes + 1
+          store.commit('LIKE_CHANGE', {
+            index: this.index,
+            num: this.detailData.likes + 1
+          })
+          console.log(this.detailData)
+        } else {
+          this.isLike = !this.isLike
+          store.commit('LIKE_CHANGE', {
+            index: this.index,
+            num: this.detailData.likes - 1
+          })
+        }
+        let oldStorage = wx.getStorageSync('isLike')
+        oldStorage[this.index] = this.isLike
+        // 将本次设置的结果再缓存到本地
+        wx.setStorage({
+          key: 'isLike',
+          data: oldStorage
+        })
+      }
+    },
+    beforeMount () {
+      this.index = this.$mp.query.index
+      let oldStorage = wx.getStorageSync('isLike')
+      if (!oldStorage) {
+        wx.setStorage({
+          key: 'isLike',
+          data: {}
+        })
+      } else {
+        this.isLike = !!oldStorage[this.index]
+      }
+      console.log(this.isLike)
     }
   }
 </script>
@@ -40,5 +122,38 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+  }
+  .img{
+    width: 50%;
+    height:100px;
+
+  }
+  .title {
+    font-weight: bold;
+  }
+  .likeimg1 {
+    width: 20px;
+    height: 20px;
+  }
+  .likeimg2 {
+    width: 25px;
+    height: 25px;
+  }
+  .zan{
+    position: relative;
+    margin-right: 18px;
+  }
+  .num{
+    position: absolute;
+    z-index: 1;
+    margin-top:0;
+    margin-left: 25px;
+  }
+  .icon{
+    width: 25px;
+    height: 25px;
+  }
+  .comment{
+    position: relative;
   }
 </style>

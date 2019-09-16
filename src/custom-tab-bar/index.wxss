@@ -1,4 +1,5 @@
 .wrapper {
+  display: flex;
   position: fixed;
   width: 100%;
   height: 150rpx;
@@ -6,6 +7,8 @@
   border-top: #2f2f2f2f solid .05em;
   /*overflow: visible;*/
   bottom: 0;
+  left: 0;
+  z-index: 999
 }
 
 .cell {

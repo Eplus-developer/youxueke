@@ -25,7 +25,6 @@
 
 <script>
   import profile from '@/components/profile'
-
   import store from '@/store'
   import utils from '@/utils'
   import { mapState } from 'vuex'
