@@ -1,9 +1,9 @@
 <template>
   <div class="container1 ub-box ub-col">
     <dl class="ub-box ub-ver z-padding-v-10-px box1" style="background: #fff">
-        <div @click.stop="search" class="search ub-box ub-ver-v z-width-80-percent z-box-sizing-border">
+        <div  class="search ub-box ub-ver-v z-width-80-percent z-box-sizing-border">
           <i-icon type="search"  size-="16" color="#666"/>
-          <input class="z-font-size-14 z-color-999" type="text" v-model="searchString" placeholder="请输入课程内容..." @click="searchTo">
+          <span @click="searchTo" class="z-font-size-14 z-color-999">请输入课程名称...</span>
         </div>
     </dl>
       <div class="ub-ver tab">
