@@ -3,7 +3,7 @@
     <dl class="ub-box ub-ver z-padding-v-10-px box1" style="background: #fff">
         <div @click.stop="search" class="search ub-box ub-ver-v z-width-80-percent z-box-sizing-border">
           <i-icon type="search"  size-="16" color="#666"/>
-          <span class="z-font-size-14 z-color-999">请输入课程..</span>
+          <input class="z-font-size-14 z-color-999" type="text" v-model="searchString" placeholder="请输入课程内容..." @click="searchTo">
         </div>
     </dl>
       <div class="ub-ver tab">
@@ -47,17 +47,23 @@
         change (key) {
           this.current = key
           this.currentView = key
+        },
+        searchTo () {
+          wx.navigateTo({
+            url: '/pages/search/main'
+          })
         }
       }
     }
 </script>
 
 <style scoped>
-  .container1{width:100%;height:100vh;background:#e8e8e8;}
+  .container1{width:100%;
+    height: 100%;
+    background:#e8e8e8;}
   .search{background: #f5f5f5;border-radius: 12px;padding: 5px 10px; }
   .box1{
     width:100%;
-    height: 60px;
   }
   .tab{
     width:100%;

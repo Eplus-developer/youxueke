@@ -1,27 +1,19 @@
 <template>
   <div class="ub-box ub-col">
-    <dynamic-list
-      v-for="item in dynamicData"
-      :key="item.id"
-      :title="item.title"
-      :des="item.des"
-      :author="item.author"
-      :likes="item.likes"
-      :replies="item.replies">
-    </dynamic-list>
+   <dynamicList v-for="(item, index) in dynamicData" :key="item.id" :index="index" :item="item"></dynamicList>
   </div>
 </template>
 
 <script>
   import dynamicList from './dynamic.vue'
   import utils from '@/utils'
-
-  export default {
-    name: 'tab0',
-    components: { dynamicList },
+  import { mapState } from 'vuex'
+  import store from '@/store'
+  export default{
+    components: {dynamicList},
     data () {
       return {
-        dynamicData: []
+        dynamicDate: []
       }
     },
     mounted () {
@@ -32,9 +24,18 @@
         result: utils.fakeData.DYNAMIC_LIST_DATA
       })
         .then(function (res) {
-          this.dynamicData = []
-          this.dynamicData.push(...res.data.Topic)
-        }.bind(this))
+          // store.state.dynamicDate.push(...res.data.Topic)
+          store.commit('TOPIC_LIST', {
+            dynamicData: res.data.Topic
+          })
+          console.log(this.dynamicData)
+        })
+      console.log(this.dynamicData)
+    },
+    computed: {
+      ...mapState(
+        {dynamicData: state => state.dynamicData}
+      )
     }
   }
 </script>

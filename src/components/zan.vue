@@ -1,9 +1,9 @@
 <template>
   <div class="ub-box ub-col ub-ver" style="background: #fff; width:27px; height: 27px" >
     <div class="zan ub-box ub-row " @click="like">
-      <img v-if="isClick === 0" class="likeimg1" src="/static/icons/zan0.png">
-      <img v-if="isClick === 1" class="likeimg2" src="/static/icons/zan1.png">
-      <p v-if="clickNum" class="z-color-666 z-font-size-12 num"> {{clickNum}}</p>
+      <img v-if="!isClick" class="likeimg1" src="/static/icons/zan0.png">
+      <img v-else class="likeimg2" src="/static/icons/zan1.png">
+      <p v-if="replies" class="z-color-666 z-font-size-12 num"> {{replies}}</p>
     </div>
   </div>
 </template>
@@ -11,17 +11,21 @@
   export default{
     data () {
       return {
-        clickNum: 0,
-        isClick: 0
+        isClick: false
+      }
+    },
+    props: {
+      replies: {
+        type: Number
       }
     },
     methods: {
       like () {
-        if (this.isClick === 0) {
-          this.isClick = 1
-          this.clickNum = this.clickNum + 1
+        if (!this.isClick) {
+          this.isClick = !this.isClick
+          this.replies = this.replies + 1
         } else {
-          this.isClick = 0
+          this.isClick = !this.isClick
           this.clickNum = this.clickNum - 1
         }
       }
