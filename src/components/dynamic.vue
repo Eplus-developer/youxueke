@@ -19,7 +19,11 @@
   </div>
 </template>
 <script>
+  import zan from './zan.vue'
+  import comment from './comment.vue'
+
   export default {
+    components: { zan, comment },
     data () {
       return {
         avatar: '/static/images/user.png',

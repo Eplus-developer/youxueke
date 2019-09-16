@@ -3,6 +3,7 @@
    <dynamicList v-for="(item, index) in dynamicData" :key="item.id" :index="index" :item="item"></dynamicList>
   </div>
 </template>
+
 <script>
   import dynamicList from './dynamic.vue'
   import utils from '@/utils'
@@ -16,6 +17,7 @@
       }
     },
     mounted () {
+      console.log('mounted')
       utils.request({
         invoke: utils.api.requestTopicList,
         params: {},
@@ -37,5 +39,6 @@
     }
   }
 </script>
+
 <style scoped>
 </style>

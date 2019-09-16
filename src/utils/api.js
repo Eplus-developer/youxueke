@@ -7,6 +7,7 @@ const apiBase = (url, params) => {
   } else {
     // console.log(`url: ${url}: params: ${params}`)
     return new Promise(resolve => {
+      if (params.name) params.name = 'rhinoceros'
       wx.request({
         url: `${base}${url}`,
         data: params,
