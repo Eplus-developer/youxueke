@@ -15,7 +15,7 @@
           </div>
         </div>
       </div>
-      <div class="ub-box ub-wrap z-padding-v-5-px ub-ver  z-margin-top-5-px">
+      <div class=" ub-box ub-wrap z-padding-v-5-px ub-ver  z-margin-top-5-px">
         <img :src="detail_img" class="z-img-cover img" alt="">
       </div>
       <div class="ub-box ub-row  ub-end z-margin-top-5-px z-margin-right-15-px">
@@ -30,15 +30,31 @@
         </div>
       </div>
     </div>
-  </scroll-view>
-  <dl class="ub-box ub-ver-v z-padding-all-10-px bottom-box" style="background: #fff">
-    <div @click.stop="pinglun" class="ping ub-box ub-ver-v z-width-80-percent ">
-      <span class="z-font-size-14 z-color-999">评论...</span>
+    <div class="replyClass ">
+      <ul v-for="item in reply"  :key="item.id" class="z-margin-left-20-px" :index="item.index">
+        <li v-if="item.type" @click.stop="replyHandle(item.author, index)">
+         <p><span>{{item.author}}:</span>&nbsp;&nbsp;{{item.des}}</p>
+        </li>
+        <li v-else @click.stop="replyHandle(item.author, index)">
+          <p><span>{{item.author}}</span>
+            &nbsp;&nbsp;回复&nbsp;&nbsp;<span>{{item.oldCommenter}}</span>:&nbsp;&nbsp;{{item.des}}</p>
+        </li>
+      </ul>
+
     </div>
-    <div class="zan ub-box ub-row " @click.stop="like">
-      <img v-if="!isLike" class="likeimg1" src="/static/icons/zan0.png">
-      <img v-else class="likeimg2" src="/static/icons/zan1.png">
-</div>
+
+  </scroll-view>
+  <dl class="ub-box ub-col  z-padding-all-10-px bottom-box" style="background: #fff">
+    <div class="wenben z-margin-bottom-3-px">
+      <p v-if="type" >你回复&nbsp;{{oldCommenter}}</p>
+      <p v-else >你回复&nbsp;{{detailData.author}}</p>
+    </div>
+   <div class="ub-row ub-box ub-ver-v">
+    <div class="ping ub-box ub-ver-v z-width-70-percent">
+      <textarea  class="z-font-size-14 z-color-999 text"  placeholder="请输入你的评论" v-model="commentText"  ></textarea>
+    </div>
+    <p  @click.stop="addComment" class="commentButton">发表</p>
+   </div>
   </dl>
 </div>
 </template>
@@ -47,6 +63,7 @@
   import zan from '../../components/zan.vue'
   import {mapState} from 'vuex'
   import store from '@/store'
+  import utils from '@/utils'
   export default{
     components: {dynamic, zan},
     data () {
@@ -56,13 +73,29 @@
         date: '2019-10-01',
         detail_img: '/static/images/banner.jpg',
         isLike: false,
-        index: Number
+        index: Number,
+        reply: [],
+        commentText: '',
+        type: 0, // 0 表示评论别人，1表示评论作者,
+        oldCommenter: ''
       }
     },
     mounted () {
-      console.log(this)
-      this.detailData = this.dynamicData[this.$mp.query.index]
-      console.log(this.detailData)
+      let that = this
+      that.detailData = that.dynamicData[that.$mp.query.index]
+      console.log(that.detailData)
+      utils.request({
+        invoke: utils.api.findRepliesByTopic,
+        params: {
+          topicId: that.detailData.id
+        },
+        result: utils.fakeData.GET_REPLY_LIST
+      })
+        .then(function (res) {
+          that.reply = []
+          that.reply.push(...res.data.Reply)
+        })
+      console.log(that.reply)
     },
     computed: {
       ...mapState(
@@ -93,7 +126,29 @@
           key: 'isLike',
           data: oldStorage
         })
+      },
+      replyHandle (name, index) {
+        this.oldCommenter = name
+        this.type = 1
+      },
+      addComment () {
+        let that = this
+        utils.request({
+          invoke: utils.api.requestReply,
+          params: {
+            topicId: that.detailData.id,
+            des: that.commentText,
+            stuId: that.$store.state.stuId,
+            date: new Date().toLocaleDateString(),
+            type: that.type,
+            oldCommenter: that.oldCommenter
+          }
+        })
+          .then(function (res) {
+            that.oldCommenter = ''
+          })
       }
+
     },
     beforeMount () {
       this.index = this.$mp.query.index
@@ -156,4 +211,35 @@
   .comment{
     position: relative;
   }
+
+  .replyClass{
+    background-color: #fff;
+    margin-top: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+  }
+  .replyClass p{
+    font-size: 12px;
+    color: #353535
+  }
+  .replyClass span{
+    color: #2ECC71;
+  }
+  .replyClass li{
+    margin-bottom: 5px
+  }
+  .text{
+    height: 30px
+  }
+  .commentButton {
+    font-size: 14px;
+    color: #2ECC71;
+    margin-left: 10px
+  }
+  .wenben p{
+    font-size: 14px;
+    color: #353535;
+  }
+
 </style>

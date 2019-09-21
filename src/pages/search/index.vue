@@ -2,7 +2,7 @@
 <div class="searchContainer" >
   <dl class="ub-box ub-ver z-padding-v-10-px box1 z-margin-top-0-px" style="background: #fff">
     <div class="search ub-box ub-ver-v z-width-80-percent z-box-sizing-border">
-      <i-icon type="search"  size-="16" color="#666"/>
+      <i-icon type="search"  size-="16" color="#666"></i-icon>
       <input class="z-font-size-14 z-color-999" type="text" autofocus="autofocus"
              v-model.trim="searchString" placeholder="请输入课程内容..." @click="searchTo">
     </div>
@@ -53,7 +53,6 @@
         if (!val) { return }
         this.keyword = val
         let that = this
-        console.log(this)
         utils.request({
           invoke: utils.api.requestCourseByTitle,
           params: {

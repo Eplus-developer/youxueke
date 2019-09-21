@@ -167,3 +167,27 @@ export const GET_COURSE_LIST_BY_TITLE = {
     }
   ]
 }
+
+export const GET_REPLY_LIST = {
+  status: 'true',
+  Reply: [
+    {
+      id: 1,
+      topic_id: 2,
+      des: '这个问题非常好',
+      author: '张同学',
+      type: 0,
+      oldCommenter: '李同学',
+      date: '2019-10-12'
+    },
+    {
+      id: 6,
+      topic_id: 0,
+      des: '这个问题非常好,feichanglsj',
+      author: '某同学',
+      type: 1,
+      oldCommenter: '',
+      date: '2019-5-10'
+    }
+  ]
+}
