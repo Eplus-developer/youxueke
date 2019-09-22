@@ -44,5 +44,6 @@
     "position": "bottom",
     "usingComponents": {
     }
-  }
+  },
+  "enablePullDownRefresh": true
 }

@@ -11,5 +11,6 @@
     "i-grid-icon": "/static/iview-style/grid-icon/index",
     "wux-dialog": "/static/wux-style/dialog/index",
     "wux-toast": "/static/wux-style/toast/index"
-  }
+  },
+  "enablePullDownRefresh": true
 }

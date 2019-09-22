@@ -16,11 +16,10 @@ export const REQUEST_LOGIN_RESPONSE_TEACHER = {
   status: 'true',
   userInfo: {
     identity: 2,
-    id: '10175101183',
+    id: '10175101176',
     name: '陈老师'
   }
 }
-
 export const REQUEST_LOGIN_RESPONSE_ADMIN = {
   status: 'true',
   userInfo: {
@@ -139,6 +138,11 @@ export const GET_COURSE_LIST_BY_DATE = GET_COURSE_LIST_BY_BOOKER
 
 export const GET_COURSE_LIST_ADMIN = GET_COURSE_LIST_BY_BOOKER
 
+export const ADD_QUESTION_RESPONSE_SUCCESSFUL = {
+  status: 'true',
+  topicID: 8
+}
+export const ADD_TOPIC_RESPONSE = true
 export const DYNAMIC_LIST_DATA = {
   status: 'true',
   Topic: [
@@ -151,7 +155,6 @@ export const DYNAMIC_LIST_DATA = {
       id: 0
     },
     {
-
       title: '操作系统',
       des: '的份上就互不干扰覅搜电脑版奥斯卡计划表GV为 安而后发 阿内入会费爱的何润锋',
       author: '吴同学',

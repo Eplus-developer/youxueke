@@ -115,6 +115,7 @@
           })
           return
         }
+        console.log(this)
         utils.request({
           invoke: utils.api.requestAddCourse,
           params: {

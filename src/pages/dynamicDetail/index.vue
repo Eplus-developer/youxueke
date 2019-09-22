@@ -3,10 +3,10 @@
   <scroll-view scroll-y scroll-top="10px">
     <div class="ub-box ub-col z-padding-all-10-px z-border-bottom-1-eee " style="background: #fff">
       <div class="ub-box ub-row">
-        <i-avatar :src="avatar" size="default"></i-avatar>
+        <i-avatar :src="detailData.avatar" size="default"></i-avatar>
         <div class="ub-box ub-col z-margin-left-10-px">
           <p class="z-font-size-14 z-color-000 z-margin-bottom-3-px">{{detailData.author}}</p>
-          <p class="z-font-size-12 z-color-666"> {{date}}</p>
+          <p class="z-font-size-12 z-color-666"> {{detailData.date}}</p>
           <div class="ub-box ub-col z-margin-top-10-px" @click.stop="question">
             <p class="title z-color-000 z-font-size-15 z-margin-bottom-5-px">{{detailData.title}}</p>
             <span class=" des z-font-size-14 z-color-353535">
@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class=" ub-box ub-wrap z-padding-v-5-px ub-ver  z-margin-top-5-px">
-        <img :src="detail_img" class="z-img-cover img" alt="">
+        <img :src="detailData.imgUrl" class="z-img-cover img" alt="">
       </div>
       <div class="ub-box ub-row  ub-end z-margin-top-5-px z-margin-right-15-px">
         <div class="zan ub-box ub-row " @click.stop="like">
@@ -51,7 +51,7 @@
     </div>
    <div class="ub-row ub-box ub-ver-v">
     <div class="ping ub-box ub-ver-v z-width-70-percent">
-      <textarea  class="z-font-size-14 z-color-999 text"  placeholder="请输入你的评论" v-model="commentText"  ></textarea>
+      <textarea  autofocus  class="z-font-size-14 z-color-999 text"  placeholder="请输入你的评论" v-model="commentText"  ></textarea>
     </div>
     <p  @click.stop="addComment" class="commentButton">发表</p>
    </div>
@@ -147,6 +147,7 @@
           .then(function (res) {
             that.oldCommenter = ''
           })
+        that.oldCommenter = ''
       }
 
     },
