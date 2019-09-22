@@ -7,11 +7,12 @@
       <div class="prime">
         <div class="title">{{ title }}</div>
         <div class="name">{{ lecturer }}</div>
+        <div class="category">{{ category === 0 ? '学生讲师' : '研讨课' }}</div>
       </div>
       <div class="more">{{ des }}</div>
     </div>
     <div class="information">
-      <div class="cell-group" v-if="!booked">
+      <div class="cell-group" v-if="!booked && !admin">
         <div class="cell">
           <wux-icon class="bullet" type="ios-contact" size="28" color="#33cd5f"></wux-icon>
           <div class="cell-title"><label for="booker">姓名</label></div>
@@ -33,7 +34,7 @@
       <div class="time-location">
         <div class="time">
           <i-icon type="clock"></i-icon>
-          {{ date }}
+          {{ date + ' ' + time }}
         </div>
         <div class="location">
           <i-icon type="coordinates"></i-icon>
@@ -46,9 +47,66 @@
           shape="circle"
           size="small"
           @click="jump"
-          v-if="!booked"
+          v-if="!booked && !admin && verified"
         >我要预约</i-button>
-        <div v-else>您已预约该课程</div>
+        <div v-if="booked && !admin && verified">您已预约该课程</div>
+        <div v-if="!verified && !admin">此课程尚未通过审核</div>
+        <div v-if="verified && admin">此课程已经审核</div>
+        <div class="operation-wrapper" v-if="!verified && admin">
+          <i-button
+            long
+            inline
+            class="operation-left"
+            type="success"
+            shape="circle"
+            @click="pass"
+          >通过</i-button>
+          <i-button
+            long
+            inline
+            class="operation-right"
+            type="success"
+            shape="circle"
+            @click="edit"
+          >编辑</i-button>
+        </div>
+      </div>
+      <div :class="{edit: true, pop: popup}">
+        <div class="cell-group">
+          <div class="cell">
+            <wux-icon class="bullet" type="ios-home" size="28" color="#33cd5f"></wux-icon>
+            <div class="cell-title"><label for="location">上课地点</label></div>
+            <input id="location" type="number" placeholder="请输入上课地点" v-model="editLocation">
+          </div>
+          <div class="cell">
+            <wux-icon class="bullet" type="ios-calendar" size="28" color="#33cd5f"></wux-icon>
+            <div class="cell-title">上课日期</div>
+            <div class="input">
+              <picker mode="date" :value="date" @change="dateChange" start="2018-01-01" end="2022-01-01">
+                {{ editDate }}
+              </picker>
+            </div>
+          </div>
+          <div class="cell">
+            <wux-icon class="bullet" type="ios-alarm" size="28" color="#33cd5f"></wux-icon>
+            <div class="cell-title">上课时间</div>
+            <div class="input">
+              <picker mode="time" :value="time" @change="timeChange">
+                {{ editTime }}
+              </picker>
+            </div>
+          </div>
+        </div>
+        <i-button
+          type="success"
+          shape="circle"
+          @click="save"
+        >确认修改</i-button>
+        <i-button
+          type="success"
+          shape="circle"
+          @click="collapse"
+        >取消</i-button>
       </div>
     </div>
   </div>
@@ -65,21 +123,32 @@
       return {
         title: '操作系统',
         img: '/static/images/banner.jpg',
+        lecturerId: '',
         lecturer: '金加宝',
+        phone: '',
         des: '操作系统是一门令大家都很头疼的课程',
-        date: '2019-1-31 7:30',
+        date: '2019-1-31',
+        time: '7:30',
         location: '文史楼301',
+        verified: false,
         booker: '',
         bookPhone: '',
         bookerId: '',
         courseId: null,
-        booked: false
+        booked: false,
+        popup: false,
+        editDate: '',
+        editTime: '',
+        editLocation: ''
       }
     },
     computed: {
       ...mapState({
         stuId: state => state.stuId
-      })
+      }),
+      admin () {
+        return this.$store.state.identity === 3
+      }
     },
     methods: {
       jump () {
@@ -104,6 +173,66 @@
               })
             }
           })
+      },
+      pass () {
+        utils.request({
+          invoke: utils.api.requestVerify,
+          params: {
+            courseId: this.courseId
+          },
+          result: utils.fakeData.VERIFY_RESPONSE
+        })
+          .then(function (res) {
+            if (res.data === true) {
+              wx.redirectTo({
+                url: '/pages/post-successful/main?display=审核成功'
+              })
+            }
+          })
+      },
+      edit () {
+        this.popup = true
+        this.editDate = this.date
+        this.editTime = this.time
+        this.editLocation = this.location
+      },
+      save () {
+        this.popup = false
+
+        if (this.date !== this.editDate ||
+        this.time !== this.editTime) {
+          this.date = this.editDate
+          this.time = this.editTime
+          utils.request({
+            invoke: utils.api.requestChangeDate,
+            params: {
+              courseId: this.courseId,
+              date: this.date + ' ' + this.time
+            },
+            result: utils.fakeData.CHANGE_RESPONSE
+          })
+        }
+
+        if (this.editLocation !== this.location) {
+          this.location = this.editLocation
+          utils.request({
+            invoke: utils.api.requestChangeLocation,
+            params: {
+              courseId: this.courseId,
+              location: this.location
+            },
+            result: utils.fakeData.CHANGE_RESPONSE
+          })
+        }
+      },
+      dateChange (e) {
+        this.editDate = e.target.value
+      },
+      timeChange (e) {
+        this.editTime = e.target.value
+      },
+      collapse () {
+        this.popup = false
       }
     },
     mounted () {
@@ -135,12 +264,17 @@
         result: utils.fakeData.COURSE_DETAIL_RESPONSE
       })
         .then(function (res) {
+          // TODO the cover of the course
           utils.fieldMap(res.data.Course, this, [
             'title',
-            'lecturer',
-            'date',
+            (from, to) => { to.lecturerId = from.lecturer },
+            (from, to) => { to.date = from.date.split(' ')[0] },
+            (from, to) => { to.time = from.date.split(' ')[1] },
             'location',
-            'des'
+            'des',
+            'phone',
+            (from, to) => { to.lecturer = from.trueName },
+            'verified'
           ])
         }.bind(this))
     }
@@ -173,7 +307,7 @@
     height: 80rpx;
   }
 
-  .title, .name {
+  .title, .name, .category {
     float: left;
     position: relative;
     top: 100%;
@@ -183,6 +317,10 @@
   .title {
     font-size: 1.5em;
     padding-right: 1em;
+  }
+
+  .category {
+    margin-left: 1em;
   }
 
   .more {
@@ -224,5 +362,32 @@
     text-align: center;
     left: 60%;
     width: 40%;
+  }
+
+  .edit {
+    position: fixed;
+    width: 100%;
+    bottom: -600rpx;
+    left: 0;
+    height: 600rpx;
+    border-top: solid #2f2f2f2f .05em;
+    background: #fff;
+    transition: 1s;
+  }
+
+  .pop {
+    transform: translateY(-600rpx);
+  }
+
+  .operation-left, .operation-right {
+  }
+
+  .operation-right {
+    margin-left: .5em;
+  }
+
+  .operation-wrapper {
+    width: 100%;
+    height: 100%;
   }
 </style>

@@ -66,6 +66,7 @@
   background: #fff;
   overflow: visible;
   bottom: -250rpx;
+  z-index: 1000;
   /* transform: translateY(-250rpx); */
   z-index: 1000;
 }

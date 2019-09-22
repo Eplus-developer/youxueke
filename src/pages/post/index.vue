@@ -8,9 +8,20 @@
         <input id="course-name" type="text" placeholder="请输入课程名称" v-model="courseName">
       </div>
       <div class="cell">
+        <wux-icon class="bullet" type="ios-menu" size="28" color="#33cd5f"></wux-icon>
+        <div class="cell-title">课程类别</div>
+        <div class="input">
+          <picker
+            :value="currentOption"
+            :range="options"
+            @change="optionChange"
+          >{{ options[currentOption] }}</picker>
+        </div>
+      </div>
+      <div class="cell">
         <wux-icon class="bullet" type="ios-contact" size="28" color="#33cd5f"></wux-icon>
         <div class="cell-title"><label for="lecturer">主讲人</label></div>
-        <input id="lecturer" type="text" placeholder="请输入主讲人姓名（请输入真实姓名）" v-model="lecturer">
+        <input id="lecturer" type="text" placeholder="请输入主讲人真实姓名" v-model="lecturer">
       </div>
       <div class="cell">
         <wux-icon class="bullet" type="ios-phone-portrait" size="28" color="#33cd5f"></wux-icon>
@@ -18,11 +29,25 @@
         <input id="phone-number" type="number" placeholder="请输入手机号码" v-model="phoneNumber">
       </div>
       <div class="cell">
+        <wux-icon class="bullet" type="ios-home" size="28" color="#33cd5f"></wux-icon>
+        <div class="cell-title"><label for="location">上课地点</label></div>
+        <input id="location" type="number" placeholder="请输入上课地点" v-model="location">
+      </div>
+      <div class="cell">
         <wux-icon class="bullet" type="ios-calendar" size="28" color="#33cd5f"></wux-icon>
         <div class="cell-title">上课日期</div>
         <div class="input">
           <picker mode="date" :value="date" @change="dateChange" start="2018-01-01" end="2022-01-01">
             {{ date }}
+          </picker>
+        </div>
+      </div>
+      <div class="cell">
+        <wux-icon class="bullet" type="ios-alarm" size="28" color="#33cd5f"></wux-icon>
+        <div class="cell-title">上课时间</div>
+        <div class="input">
+          <picker mode="time" :value="time" @change="timeChange">
+            {{ time }}
           </picker>
         </div>
       </div>
@@ -44,6 +69,7 @@
 
   import utils from '@/utils'
   import { $wuxToast } from '@/../static/wux-style/index'
+  import { mapState } from 'vuex'
 
   export default {
     name: 'index',
@@ -55,7 +81,22 @@
         phoneNumber: '',
         imagePath: '',
         introduction: '',
-        date: '2019-01-01'
+        date: '2019-01-01',
+        time: '13:00',
+        location: '',
+        options: [
+          '普通课程',
+          '研讨会'
+        ],
+        currentOption: 0
+      }
+    },
+    computed: {
+      ...mapState({
+        stuId: state => state.stuId
+      }),
+      isTeacher () {
+        return this.$store.state.identity === 2
       }
     },
     methods: {
@@ -67,36 +108,70 @@
           })
           return
         }
+        if (parseInt(this.currentOption) === 0 && !this.isTeacher) {
+          $wuxToast().show({
+            type: 'forbidden',
+            text: '只有学生导师才能发布此类课程'
+          })
+          return
+        }
         utils.request({
           invoke: utils.api.requestAddCourse,
           params: {
             title: this.courseName,
             des: this.introduction,
-            stuId: this.lecturer,
-            location: '',
-            date: this.date
+            stuId: this.stuId,
+            location: this.location,
+            date: this.date + ' ' + this.time,
+            category: parseInt(this.currentOption),
+            trueName: this.lecturer,
+            phone: this.phoneNumber
           },
-          result: utils.fakeData.SUCCESS_RESPONSE_PIECE
+          result: utils.fakeData.ADD_COURSE_RESPONSE_SUCCESSFUL
         })
           .then(function (res) {
             if (res.data.status === 'true') {
-              // TODO upload the cover of the course.
-              wx.redirectTo({
-                url: '/pages/post-successful/main'
+              utils.request({
+                invoke: utils.api.requestRelease,
+                params: {
+                  stuId: this.stuId,
+                  phone: this.phone,
+                  courseId: res.data.courseID,
+                  trueName: this.lecturer
+                },
+                result: utils.fakeData.ADD_RELEASE_RESPONSE
               })
+                .then(function (res) {
+                  if (res.data === true) {
+                    wx.redirectTo({
+                      url: '/pages/post-successful/main?display=发布成功'
+                    })
+                  } else {
+                    $wuxToast().show({
+                      type: 'forbidden',
+                      text: '发布失败'
+                    })
+                  }
+                })
             } else {
               $wuxToast().show({
                 type: 'forbidden',
                 text: '发布失败'
               })
             }
-          })
+          }.bind(this))
       },
       uploadImage (url) {
         this.url = url
       },
       dateChange (e) {
         this.date = e.target.value
+      },
+      timeChange (e) {
+        this.time = e.target.value
+      },
+      optionChange (e) {
+        this.currentOption = parseInt(e.target.value)
       }
     }
   }

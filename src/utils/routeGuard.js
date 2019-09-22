@@ -1,6 +1,7 @@
 import utils from '@/utils'
 import { $wuxDialog, $wuxToast } from '@/../static/wux-style/index'
 
+// call this after the weixin authorization, otherwise the nickname and the avatar will be undefined.
 export const routeGuard = async function () {
   let that = this
   if (this.$store.state.loginState) return Promise.resolve(this.$store.state.identity)
@@ -13,11 +14,11 @@ export const routeGuard = async function () {
           params: {
             'js_code': res.code
           },
-          result: utils.fakeData.REQUEST_LOGIN_RESPONSE_TEACHER
+          result: utils.fakeData.REQUEST_LOGIN_RESPONSE_ADMIN
         })
           .then(res => {
             if (res.data.status === 'false') {
-              register.apply(that, resolve)
+              register.apply(that, [resolve])
             } else {
               resolve(res.data.userInfo.identity)
               that.$store.commit('LOG_IN', {
@@ -69,6 +70,15 @@ function register (resolve) {
               if (res.data === true) {
                 type = 'success'
                 text = '成功注册'
+                // upload the avatar of the new user
+                utils.request({
+                  invoke: utils.api.requestUploadAvatar,
+                  params: {
+                    url: that.$store.state.avatar,
+                    stuId: stuId
+                  },
+                  result: utils.fakeData.UPLOAD_AVATAR_RESPONSE
+                })
               } else {
                 type = 'forbidden'
                 text = '注册失败'
@@ -80,7 +90,9 @@ function register (resolve) {
                 text: text,
                 success: () => console.log('fb')
               })
+              console.log(resolve)
               resolve(false)
+              console.log('hit')
             })
         }
       })
