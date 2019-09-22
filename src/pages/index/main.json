@@ -8,6 +8,8 @@
     "i-badge": "/static/iview-style/badge/index",
     "i-grid": "/static/iview-style/grid/index",
     "i-grid-item": "/static/iview-style/grid-item/index",
-    "i-grid-icon": "/static/iview-style/grid-icon/index"
+    "i-grid-icon": "/static/iview-style/grid-icon/index",
+    "wux-dialog": "/static/wux-style/dialog/index",
+    "wux-toast": "/static/wux-style/toast/index"
   }
 }

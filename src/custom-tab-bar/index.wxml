@@ -13,15 +13,15 @@
 </cover-view>
 <cover-view class='popup' style='{{pop_style}}'>
   <cover-view class='middle-wrapper'>
-    <cover-view class='popup-cell' wx:if='{{identity === 2}}'>
+    <cover-view class='popup-cell' wx:if='{{true || identity === 2}}'>
       <cover-image src='/static/icons/question.png' class='popup-icon' bindtap='questioning'></cover-image>
       <cover-view class='cell-text'>提问题</cover-view>
     </cover-view>
-    <cover-view class='popup-cell' wx:if='{{identity === 2}}'>
+    <cover-view class='popup-cell' wx:if='{{true || identity === 2}}'>
       <cover-image src='/static/icons/post.png' class='popup-icon' bindtap='posting'></cover-image>
       <cover-view class='cell-text'>发布课程</cover-view>
     </cover-view>
-    <cover-view class='single-cell' wx:else>
+    <cover-view class='single-cell' wx:if='{{false}}'>
       <cover-image src='/static/icons/question.png' class='popup-icon' bindtap='questioning'></cover-image>
       <cover-view class='cell-text'>提问题</cover-view>
     </cover-view>

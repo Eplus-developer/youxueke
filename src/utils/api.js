@@ -1,5 +1,5 @@
 const base = 'http://47.103.95.85:8080'
-export const DEVELOPMENT = true
+export const DEVELOPMENT = false
 
 const apiBase = (url, params) => {
   if (DEVELOPMENT) {
@@ -112,12 +112,26 @@ export const requestCourseByTitle = params => {
  * @param {String} params.title
  * @param {String} params.des
  * @param {String} params.stuId
+ * @param {String} params.lecturer
  * @param {String} params.location
  * @param {String} params.date
- * @returns {Promise<{status: String}>}
+ * @param {String} params.category
+ * @returns {Promise<{status: String, courseID: number}>}
  */
 export const requestAddCourse = params => {
   return apiBase('/course/add', params)
+}
+
+export const requestVerify = params => {
+  return apiBase('/course/verify', params)
+}
+
+export const requestChangeLocation = params => {
+  return apiBase('/course/changeLocation', params)
+}
+
+export const requestChangeDate = params => {
+  return apiBase('/course/changeDate', params)
 }
 
 // ======= release =======

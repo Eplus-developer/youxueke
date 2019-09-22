@@ -4,14 +4,22 @@
       <i-icon type="success_fill" color="#19be6b" size="100"></i-icon>
     </div>
     <div class="text">
-      发布成功
+      {{ display }}
     </div>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'index'
+    name: 'index',
+    data () {
+      return {
+        display: ''
+      }
+    },
+    mounted () {
+      this.display = this.$root.$mp.query.display
+    }
   }
 </script>
 

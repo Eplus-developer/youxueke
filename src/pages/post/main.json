@@ -1,12 +1,13 @@
 {
   "navigationBarTitleText": "发布课程",
   "usingComponents": {
-    "i-cell-group": "/static/iview-style/cell-group/index",
     "i-icon": "/static/iview-style/icon/index",
     "i-button": "/static/iview-style/button/index",
-    "i-cell": "/static/iview-style/cell/index",
     "wux-icon": "/static/wux-style/icon/index",
     "wux-button": "/static/wux-style/button/index",
-    "wux-toast": "/static/wux-style/toast/index"
+    "wux-toast": "/static/wux-style/toast/index",
+    "wux-picker": "/static/wux-style/picker/index",
+    "wux-cell": "/static/wux-style/cell/index",
+    "wux-date-picker": "/static/wux-style/date-picker/index"
   }
 }

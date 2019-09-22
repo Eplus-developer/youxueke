@@ -7,6 +7,7 @@
       :title="item.title"
       :location="item.location"
       :lecturer="item.lecturer"
+      :verification="item.verification"
       :booked="booked"
     ></course-cell>
   </div>
@@ -29,7 +30,8 @@
     data () {
       return {
         courseList: [],
-        booked: false
+        booked: false,
+        toVerify: false
       }
     },
     mounted () {
@@ -46,6 +48,11 @@
         requestMethod = utils.api.requestCourseByStudent
         response = utils.fakeData.GET_COURSE_LIST_BY_BOOKER
         break
+      case 'verify':
+        this.toVerify = true
+        requestMethod = utils.api.requestAllCourse
+        response = utils.fakeData.GET_COURSE_LIST_ADMIN
+        break
       }
       utils.request({
         invoke: requestMethod,
@@ -56,12 +63,15 @@
       })
         .then(function (res) {
           this.courseList = []
-          if (res.data.Release && res.data.Release.length > 0) this.courseList.push(...res.data.Release)
-          else if (res.data.Course && res.data.Course.length > 0) this.courseList.push(...res.data.Course)
+          if (res.data.Release && res.data.Release.length > 0) {
+            this.courseList.push(...res.data.Release)
+          } else if (res.data.Course && res.data.Course.length > 0) {
+            this.courseList.push(...res.data.Course)
+          }
+          if (this.toVerify) {
+            this.courseList = this.courseList.filter(item => !item.verification)
+          }
         }.bind(this))
-    },
-    destroyed () {
-      console.log('destroyed')
     }
   }
 </script>

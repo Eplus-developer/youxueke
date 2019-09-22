@@ -6,6 +6,7 @@ Vue.use(Vuex)
 const state = {
   loginState: false,
   stuId: '',
+  /* 0 for not logged in, 1 for students, 2 for teachers, 3 for administrator. */
   identity: 0,
   name: '获取昵称中',
   avatar: '',
