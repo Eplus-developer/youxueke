@@ -15,7 +15,7 @@
         :date="item.date"
         :location="item.location"
         :des="item.des"
-        :title="title"
+        :title="item.title"
       ></course-cell>
     </div>
   </div>

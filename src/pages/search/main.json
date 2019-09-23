@@ -1,1 +1,6 @@
-{}
+{
+  "navigationBarTitleText": "搜索课程",
+  "usingComponents": {
+    "i-icon": "/static/iview-style/icon/index"
+  }
+}

@@ -18,6 +18,8 @@
 </template>
 
 <script>
+  import utils from '@/utils'
+  import { $wuxToast } from '@/../static/wux-style/index'
   export default {
     name: 'index',
     data () {
@@ -29,9 +31,32 @@
     },
     methods: {
       post_question () {
-        wx.navigateTo({
-          url: '/pages/post-successful/main'
+        utils.request({
+          invoke: utils.api.requestAddTopic,
+          params: {
+            title: this.questionTitle,
+            des: this.questionIntroduction,
+            stuId: this.stuId,
+            avatar: this.$store.state.avatar,
+            author: this.$store.state.name,
+            date: new Date().toLocaleDateString(),
+            imgUrl: this.imagePath
+          },
+          result: utils.fakeData.ADD_QUESTION_RESPONSE_SUCCESSFUL
         })
+          .then(function (res) {
+            console.log(res)
+            if (res.data.status === 'true') {
+              wx.redirectTo({
+                url: '/pages/post-successful/main?display=发布成功'
+              })
+            } else {
+              $wuxToast().show({
+                type: 'forbidden',
+                text: '发布失败'
+              })
+            }
+          })
       },
       uploadImage () {
         let that = this

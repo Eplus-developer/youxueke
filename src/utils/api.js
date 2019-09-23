@@ -26,8 +26,9 @@ const apiBase = (url, params) => {
  * @typedef {{stuId: String, courseId: number, phone: String}} Booking
  * @typedef {{id: number, title: String, des: String, lecturer: String, date: String, location: String}} Course
  * @typedef {{teaId: String, courseId: number, phone: String}} Release
- * @typedef {{id: number, topic_id: number, des: String, author: String, likes: number}} Reply
- * @typedef {{id: number, title: String, des: String, author: String, likes: number, replies: number}} Topic
+ * @typedef {{id: number, topic_id: number, des: String, author: String, type: Number, oldCommenter: String, date: String }} Reply
+ *type 0 表示评论别人，1表示评论作者
+ * @typedef {{id: number, title: String, des: String, author: String, likes: number, replies: number,avatar: String, date: String, imgUrl: String}} Topic
  * @typedef {{ID: String, name: String, open_id: String, identity: number}} User
  * @typedef {{identity: number, name: String, id: String}} userInfo
  */
@@ -174,12 +175,23 @@ export const requestRelease = params => {
  * @param {number} params.topicId
  * @param {String} params.des
  * @param {String} params.stuId
- * @returns {Promise<{status: String, replyID: number}>}
+ * @param {String} params.date
+ * @param {String} params.oldCommenter
+ * @param {Number} params.type
+ * @returns {Promise<{status: String, replyID: number}>}>}
  */
 export const requestReply = params => {
   return apiBase('/reply/add', params)
 }
-
+/**
+ * url: /reply/findRepliesByTopic
+ * @param {Object} params
+ * @param {number} params.topicId
+ * @returns {Promise<{status: String, Reply: Array<Reply>}>}
+ */
+export const requestReplyByTopic = params => {
+  return apiBase('/reply/findRepliesByTopic', params)
+}
 /**
  * url: /reply/addLikes
  * @param {Object} params
@@ -238,6 +250,10 @@ export const requestTopicByAuthor = params => {
  * @param {String} params.title
  * @param {String} params.des
  * @param {String} params.stuId
+ * @param {String} params.avatar
+ * @param {String} params.date
+ * @param {String} params.imgUrl
+ * @param {String} params.author
  * @returns {Promise<{status: String, topicID: number}>}
  */
 export const requestAddTopic = params => {

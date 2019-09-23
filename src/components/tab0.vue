@@ -17,7 +17,8 @@
       }
     },
     mounted () {
-      console.log('mounted')
+      let that = this
+      console.log(that)
       utils.request({
         invoke: utils.api.requestTopicList,
         params: {},
