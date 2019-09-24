@@ -3,7 +3,7 @@
     <scroll-view scroll-y style="width:100%" scroll-top="0">
       <dl class="ub-box ub-col  ub-ver z-width-100-percent">
         <div class="course ub-box  ub-ver-v  z-margin-top-20-px z-padding-v-10-px z-width-80-percent" v-for="course in courses"  :key="course.index" @click="exercise">
-          <span class="z-color-000 z-font-size-17 z-margin-left-15-px z-width-80-percent">{{course.name}}</span>
+          <span class="z-color-000 z-font-size-14 z-margin-left-15-px z-width-80-percent">{{course.name}}</span>
           <!--<i-icon type="brush" size="18" color="#111"/>-->
           <img src="/static/icons/pen.png" alt="not see" style="width:25px;height:25px">
         </div>

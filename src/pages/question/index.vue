@@ -2,12 +2,12 @@
   <div class="wrapper">
     <div class="cell-group">
       <div class="cell">
-        <wux-icon class="bullet" type="ios-clipboard" size="28" color="#33cd5f"></wux-icon>
+        <wux-icon class="bullet" type="ios-clipboard" size="22" color="#2ECC71"></wux-icon>
         <div class="cell-title"><label for="question-title">标题</label></div>
         <input id="question-title" type="text" placeholder="请输入标题" v-model="questionTitle">
       </div>
       <div class="cell">
-        <wux-icon class="bullet" type="ios-paper" size="28" color="#33cd5f"></wux-icon>
+        <wux-icon class="bullet" type="ios-paper" size="22" color="#2ECC71"></wux-icon>
         <div class="cell-title"><label for="question-intro">问题简介</label></div>
         <input id="question-intro" type="text" placeholder="请输入课程简单并上传图片" v-model="questionIntroduction">
       </div>
@@ -81,7 +81,7 @@
     left: 0;
     margin: 0;
     padding: 0 0 150rpx 0;
-    font-size: .9em;
+    font-size: 14px;
     background: #fff;
   }
 

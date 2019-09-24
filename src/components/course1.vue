@@ -14,6 +14,10 @@
             <i-icon type="coordinates_fill"  size="20" color="#888"></i-icon>
             <span class="z-font-size-12 z-color-888"> {{location}}</span>
           </p>
+          <p class="ub-flex-1 ub-box ub-ver-v" >
+            <span class="z-font-size-12 " v-if="verification" style="color:#2ECC71"> 审核通过</span>
+            <span class="z-font-size-12 " v-else style="color:darkred"> 未审核</span>
+          </p>
         </div>
       </div>
     </div>
@@ -34,7 +38,8 @@
       booked: {
         type: Boolean,
         default: false
-      }
+      },
+      verification: Number
     },
     methods: {
       gotoDetail () {

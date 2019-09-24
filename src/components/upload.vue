@@ -41,6 +41,7 @@
         })
       }
     }
+    //  border: solid #000 .05rpx;
   }
 </script>
 
@@ -48,7 +49,6 @@
   .wrapper {
     width: 100%;
     padding: 5%;
-    border: solid #000 .05rpx;
     border-radius: 8%;
     position: relative;
   }
