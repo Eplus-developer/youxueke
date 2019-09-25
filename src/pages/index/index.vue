@@ -1,5 +1,5 @@
 <template>
-  <div class="container1 ub-box ub-col">
+  <div class="container1 ub-box ub-col" id="containerId">
     <wux-dialog id="wux-dialog"></wux-dialog>
     <wux-toast id="wux-toast"></wux-toast>
     <button
@@ -11,18 +11,18 @@
     >
       优学课需要获取你的微信信息来进行展示，请点击这里，并且在弹出的窗口中选择确认
     </button>
-    <dl class="ub-box ub-ver z-padding-v-10-px box1" style="background: #fff">
+    <dl class="ub-box ub-ver z-padding-v-10-px box1" style="background: #fff" id="searchId">
         <div  class="search ub-box ub-ver-v z-width-80-percent z-box-sizing-border">
           <i-icon type="search"  size-="16" color="#666"/>
           <span @click="searchTo" class="z-font-size-14 z-color-999">请输入课程名称...</span>
         </div>
     </dl>
-      <div class="ub-ver tab">
+      <div class="ub-ver tab" id="tabId">
         <i-tabs :current="current" i-class="tab" color="#2ECC71">
           <i-tab v-for="item in tabs" :key="item.key" :title="item.title" :class="{active: current === item.key}" @click="change(item.key)"></i-tab>
         </i-tabs>
       </div>
-      <scroll-view scroll-y style="height: calc(100vh-50px)" scroll-top="0">
+      <scroll-view scroll-y :style="{height: scrollHeight + 'px'}">
       <div>
         <div v-if="current === 'tab0'">
           <tab0></tab0>
@@ -55,7 +55,11 @@
             {key: 'tab1', title: '课程'},
             {key: 'tab2', title: '练习'}
           ],
-          userInfoStatus: true
+          userInfoStatus: true,
+          searchHeight: 0,
+          tabHeight: 0,
+          scrollHeight: 0,
+          screenH: 0
         }
       },
       components: {'tab0': tab0, 'tab1': tab1, 'tab2': tab2},
@@ -102,10 +106,45 @@
           }
         })
         this.checkLogin()
+      },
+      beforeMount () {
+        let that = this
+        // wx.createSelectorQuery().select('#searchId').boundingClientRect(function (rect) {
+        // console.log(rect)
+        // that.searchHeight = rect.height
+        // }).exec()
+
+        let query = wx.createSelectorQuery()
+        query.select('#tabId').boundingClientRect()
+        query.selectViewport().scrollOffset()
+        query.exec(function (res) {
+          console.log(res)
+          that.tabHeight = res[0].height
+          console.log(that.tabHeight)
+        })
+        let s = wx.createSelectorQuery()
+        s.select('#searchId').boundingClientRect()
+        s.selectViewport().scrollOffset()
+        s.exec(function (res) {
+          console.log(res)
+          that.searchHeight = res[0].height
+          console.log(that.searchHeight)
+        })
+        let t = wx.createSelectorQuery()
+        t.select('#containerId').boundingClientRect()
+        t.selectViewport().scrollOffset()
+        t.exec(function (res) {
+          console.log(res)
+          that.screenH = (res[0].height)
+          console.log(that.screenH)
+          that.scrollHeight = that.screenH - that.tabHeight - that.searchHeight - 55
+          console.log(that.scrollHeight)
+        })
       }
+
+
     }
 </script>
-
 <style scoped>
   .container1 {
     width: 100%;

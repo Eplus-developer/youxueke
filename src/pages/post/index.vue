@@ -3,12 +3,12 @@
     <wux-toast id="wux-toast"></wux-toast>
     <div class="cell-group">
       <div class="cell">
-        <wux-icon class="bullet" type="ios-clipboard" size="28" color="#33cd5f"></wux-icon>
+        <wux-icon class="bullet" type="ios-clipboard" size="22" color="#2ECC71"></wux-icon>
         <div class="cell-title"><label for="course-name">课程名称</label></div>
         <input id="course-name" type="text" placeholder="请输入课程名称" v-model="courseName">
       </div>
       <div class="cell">
-        <wux-icon class="bullet" type="ios-menu" size="28" color="#33cd5f"></wux-icon>
+        <wux-icon class="bullet" type="ios-menu" size="22" color="#2ECC71"></wux-icon>
         <div class="cell-title">课程类别</div>
         <div class="input">
           <picker
@@ -19,22 +19,22 @@
         </div>
       </div>
       <div class="cell">
-        <wux-icon class="bullet" type="ios-contact" size="28" color="#33cd5f"></wux-icon>
+        <wux-icon class="bullet" type="ios-contact" size="22" color="#2ECC71"></wux-icon>
         <div class="cell-title"><label for="lecturer">主讲人</label></div>
         <input id="lecturer" type="text" placeholder="请输入主讲人真实姓名" v-model="lecturer">
       </div>
       <div class="cell">
-        <wux-icon class="bullet" type="ios-phone-portrait" size="28" color="#33cd5f"></wux-icon>
+        <wux-icon class="bullet" type="ios-phone-portrait" size="22" color="#2ECC71"></wux-icon>
         <div class="cell-title"><label for="phone-number">手机号码</label></div>
         <input id="phone-number" type="number" placeholder="请输入手机号码" v-model="phoneNumber">
       </div>
       <div class="cell">
-        <wux-icon class="bullet" type="ios-home" size="28" color="#33cd5f"></wux-icon>
+        <wux-icon class="bullet" type="ios-home" size="22" color="#2ECC71"></wux-icon>
         <div class="cell-title"><label for="location">上课地点</label></div>
         <input id="location" type="number" placeholder="请输入上课地点" v-model="location">
       </div>
       <div class="cell">
-        <wux-icon class="bullet" type="ios-calendar" size="28" color="#33cd5f"></wux-icon>
+        <wux-icon class="bullet" type="ios-calendar" size="22" color="#2ECC71"></wux-icon>
         <div class="cell-title">上课日期</div>
         <div class="input">
           <picker mode="date" :value="date" @change="dateChange" start="2018-01-01" end="2022-01-01">
@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="cell">
-        <wux-icon class="bullet" type="ios-alarm" size="28" color="#33cd5f"></wux-icon>
+        <wux-icon class="bullet" type="ios-alarm" size="22" color="#2ECC71"></wux-icon>
         <div class="cell-title">上课时间</div>
         <div class="input">
           <picker mode="time" :value="time" @change="timeChange">
@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="cell">
-        <wux-icon class="bullet" type="ios-paper" size="28" color="#33cd5f"></wux-icon>
+        <wux-icon class="bullet" type="ios-paper" size="22" color="#2ECC71"></wux-icon>
         <div class="cell-title"><label for="introduction">课程简介</label></div>
         <input id="introduction" type="text" placeholder="请输入课程简单并上传图片" v-model="introduction">
       </div>
@@ -188,7 +188,7 @@
     left: 0;
     margin: 0;
     padding: 0 0 150rpx 0;
-    font-size: .9em;
+    font-size: 14px;
     background: #fff;
   }
 
