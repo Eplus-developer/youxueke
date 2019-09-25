@@ -3,7 +3,7 @@
     <div class="ub-box ub-row">
       <i-avatar :src="item.avatar" size="default"></i-avatar>
       <div class="ub-box ub-col z-margin-left-10-px">
-        <p class="z-font-size-14 z-color-000 z-margin-bottom-3-px">{{item.author}}</p>
+        <p class="z-font-size-14 z-color-000 z-margin-bottom-3-px">{{item.author_name}}</p>
         <p class="z-font-size-12 z-color-666"> {{item.date}}</p>
     <div class="ub-box ub-col z-margin-top-10-px" @click.stop="question">
       <p class="title z-color-000 z-font-size-15 z-margin-bottom-5-px">{{item.title}}</p>

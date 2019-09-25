@@ -1,4 +1,5 @@
-const base = 'http://47.103.95.85:8080'
+// const base = 'http://47.103.95.85:8080'
+const base = 'https://youxuekeecnu.cn'
 export const DEVELOPMENT = false
 
 const apiBase = (url, params) => {
@@ -348,4 +349,8 @@ export const requestRegister = params => {
  */
 export const requestUploadAvatar = params => {
   return apiBase('/user/uploadAvatar', params)
+}
+
+export const requestLookUpUser = params => {
+  return apiBase('/user/lookup', params)
 }

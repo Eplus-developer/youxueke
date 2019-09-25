@@ -5,7 +5,7 @@
       <div class="ub-box ub-row">
         <i-avatar :src="detailData.avatar" size="default"></i-avatar>
         <div class="ub-box ub-col z-margin-left-10-px">
-          <p class="z-font-size-14 z-color-000 z-margin-bottom-3-px">{{detailData.author}}</p>
+          <p class="z-font-size-14 z-color-000 z-margin-bottom-3-px">{{detailData.author_name}}</p>
           <p class="z-font-size-12 z-color-666"> {{detailData.date}}</p>
           <div class="ub-box ub-col z-margin-top-10-px" @click.stop="question">
             <p class="title z-color-000 z-font-size-15 z-margin-bottom-5-px">{{detailData.title}}</p>
@@ -33,10 +33,10 @@
     <div class="replyClass ">
       <ul v-for="item in reply"  :key="item.id" class="z-margin-left-20-px" :index="item.index">
         <li v-if="item.type" @click.stop="replyHandle(item.author, index)">
-         <p><span>{{item.author}}:</span>&nbsp;&nbsp;{{item.des}}</p>
+         <p><span>{{item.author_name}}:</span>&nbsp;&nbsp;{{item.des}}</p>
         </li>
         <li v-else @click.stop="replyHandle(item.author, index)">
-          <p><span>{{item.author}}</span>
+          <p><span>{{item.author_name}}</span>
             &nbsp;&nbsp;回复&nbsp;&nbsp;<span>{{item.oldCommenter}}</span>:&nbsp;&nbsp;{{item.des}}</p>
         </li>
       </ul>
@@ -47,7 +47,7 @@
   <dl class="ub-box ub-col  z-padding-all-10-px bottom-box" style="background: #fff">
     <div class="wenben z-margin-bottom-3-px">
       <p v-if="type" >你回复&nbsp;{{oldCommenter}}</p>
-      <p v-else >你回复&nbsp;{{detailData.author}}</p>
+      <p v-else >你回复&nbsp;{{detailData.author_name}}</p>
     </div>
    <div class="ub-row ub-box ub-ver-v">
     <div class="ping ub-box ub-ver-v z-width-70-percent">

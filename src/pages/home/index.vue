@@ -38,8 +38,8 @@
     data () {
       return {
         options: [
-          {title: '我参加的', url: '/pages/home/main'},
-          {title: '我提问的', url: '/pages/home/main'},
+          // {title: '我参加的', url: '/pages/home/main'},
+          // {title: '我提问的', url: '/pages/home/main'},
           {title: '我预约的', url: '/pages/course-list/main?type=take-part'},
           {title: '我发布的', url: '/pages/course-list/main?type=post'}
         ]

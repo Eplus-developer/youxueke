@@ -25,6 +25,7 @@ const mutations = {
     state.avatar = avatar
   },
   TOPIC_LIST (state, {dynamicData}) {
+    state.dynamicData = []
     state.dynamicData = dynamicData.slice()
     console.log(state)
   },

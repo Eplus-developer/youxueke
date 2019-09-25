@@ -20,6 +20,8 @@
 <script>
   import utils from '@/utils'
   import { $wuxToast } from '@/../static/wux-style/index'
+  import { mapState } from 'vuex'
+
   export default {
     name: 'index',
     data () {
@@ -29,8 +31,14 @@
         imagePath: '/static/icons/post/image.png'
       }
     },
+    computed: {
+      ...mapState({
+        stuId: state => state.stuId
+      })
+    },
     methods: {
       post_question () {
+        console.log(this.stuId)
         utils.request({
           invoke: utils.api.requestAddTopic,
           params: {

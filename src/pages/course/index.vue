@@ -47,12 +47,12 @@
           shape="circle"
           size="small"
           @click="jump"
-          v-if="!booked && !admin && verified"
+          v-if="!booked && !admin && verification"
         >我要预约</i-button>
-        <div v-if="booked && !admin && verified">您已预约该课程</div>
-        <div v-if="!verified && !admin">此课程尚未通过审核</div>
-        <div v-if="verified && admin">此课程已经审核</div>
-        <div class="operation-wrapper" v-if="!verified && admin">
+        <div v-if="booked && !admin && verification">您已预约该课程</div>
+        <div v-if="!verification && !admin">此课程尚未通过审核</div>
+        <div v-if="verification && admin">此课程已经审核</div>
+        <div class="operation-wrapper" v-if="!verification && admin">
           <i-button
             long
             inline
@@ -76,7 +76,7 @@
           <div class="cell">
             <wux-icon class="bullet" type="ios-home" size="28" color="#33cd5f"></wux-icon>
             <div class="cell-title"><label for="location">上课地点</label></div>
-            <input id="location" type="number" placeholder="请输入上课地点" v-model="editLocation">
+            <input id="location" placeholder="请输入上课地点" v-model="editLocation">
           </div>
           <div class="cell">
             <wux-icon class="bullet" type="ios-calendar" size="28" color="#33cd5f"></wux-icon>
@@ -130,7 +130,7 @@
         date: '2019-1-31',
         time: '7:30',
         location: '文史楼301',
-        verified: false,
+        verification: false,
         booker: '',
         bookPhone: '',
         bookerId: '',
@@ -163,7 +163,7 @@
         })
           .then(function (res) {
             if (res.data === true) {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '/pages/book-successful/main'
               })
             } else {
@@ -274,7 +274,7 @@
             'des',
             'phone',
             (from, to) => { to.lecturer = from.trueName },
-            'verified'
+            'verification'
           ])
         }.bind(this))
     }

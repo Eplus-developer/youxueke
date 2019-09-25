@@ -24,13 +24,13 @@
       </div>
       <scroll-view scroll-y :style="{height: scrollHeight + 'px'}">
       <div>
-        <div v-if="current === 'tab0'">
-          <tab0></tab0>
+        <div v-show="current === 'tab0'">
+          <tab0 ref="billboard"></tab0>
         </div>
-        <div v-else-if="current === 'tab1'">
+        <div v-show="current === 'tab1'">
           <tab1></tab1>
         </div>
-        <div v-else>
+        <div v-show="current === 'tab2'">
           <tab2></tab2>
         </div>
       </div>
@@ -44,6 +44,7 @@
 
     import utils from '@/utils'
     import store from '@/store'
+    import { $wuxToast } from '@/../static/wux-style/index'
 
     export default{
       data () {
@@ -140,9 +141,15 @@
           that.scrollHeight = that.screenH - that.tabHeight - that.searchHeight - 55
           console.log(that.scrollHeight)
         })
+      },
+      async onPullDownRefresh () {
+        await this.$refs.billboard.refresh()
+        $wuxToast().show({
+          type: 'success',
+          text: '刷新成功'
+        })
+        wx.stopPullDownRefresh()
       }
-
-
     }
 </script>
 <style scoped>

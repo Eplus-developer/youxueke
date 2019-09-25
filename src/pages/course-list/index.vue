@@ -6,9 +6,10 @@
       :course-id="item.id"
       :title="item.title"
       :location="item.location"
-      :lecturer="item.lecturer"
+      :lecturer="item.trueName"
       :verification="item.verification"
       :booked="booked"
+      :date="item.date"
     ></course-cell>
   </div>
 </template>
@@ -37,6 +38,8 @@
     mounted () {
       let requestMethod
       let response
+      this.toVerify = false
+      this.booked = false
       switch (this.$root.$mp.query.type) {
       case 'post':
         this.booked = false
@@ -54,6 +57,7 @@
         response = utils.fakeData.GET_COURSE_LIST_ADMIN
         break
       }
+      this.courseList = []
       utils.request({
         invoke: requestMethod,
         params: {
@@ -62,7 +66,6 @@
         result: response
       })
         .then(function (res) {
-          this.courseList = []
           if (res.data.Release && res.data.Release.length > 0) {
             this.courseList.push(...res.data.Release)
           } else if (res.data.Course && res.data.Course.length > 0) {

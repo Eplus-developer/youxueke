@@ -3,11 +3,11 @@
     <img :src="avatar" alt="you didn't see me! " class="avatar">
     <div class="profile-wrapper">
       <p class="user-name">{{ name }}</p>
-      <p class="profile">我是练习时长两天半的个人学习生</p>
+      <p class="profile">我是学习时长两天半的个人学习生</p>
     </div>
-    <div class="calendar" @click.stop="exerciseLog">
-      <img src="/static/icons/calendar.png" alt="you didn't see me! " class="calendar-icon">
-    </div>
+<!--    <div class="calendar" @click.stop="exerciseLog">-->
+<!--      <img src="/static/icons/calendar.png" alt="you didn't see me! " class="calendar-icon">-->
+<!--    </div>-->
   </div>
 </template>
 

@@ -11,11 +11,12 @@
         v-for="item in courseList"
         :key="item.id"
         :course-id="item.id"
-        :lecturer="item.lecturer"
+        :lecturer="item.trueName"
         :date="item.date"
         :location="item.location"
         :des="item.des"
         :title="item.title"
+        :verification="item.verification"
       ></course-cell>
     </div>
   </div>
@@ -52,7 +53,7 @@
       }
     },
     mounted () {
-      this.selectHandler(null, { date: new Date().toLocaleDateString() })
+      this.selectHandler(null, { date: new Date().toLocaleDateString().replace(/\//g, '-') })
     }
   }
 </script>

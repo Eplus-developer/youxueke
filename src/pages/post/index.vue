@@ -31,7 +31,7 @@
       <div class="cell">
         <wux-icon class="bullet" type="ios-home" size="22" color="#2ECC71"></wux-icon>
         <div class="cell-title"><label for="location">上课地点</label></div>
-        <input id="location" type="number" placeholder="请输入上课地点" v-model="location">
+        <input id="location" placeholder="请输入上课地点" v-model="location">
       </div>
       <div class="cell">
         <wux-icon class="bullet" type="ios-calendar" size="22" color="#2ECC71"></wux-icon>

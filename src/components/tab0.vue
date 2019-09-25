@@ -9,6 +9,7 @@
   import utils from '@/utils'
   import { mapState } from 'vuex'
   import store from '@/store'
+
   export default{
     components: {dynamicList},
     data () {
@@ -16,22 +17,28 @@
         dynamicDate: []
       }
     },
-    mounted () {
-      let that = this
-      console.log(that)
-      utils.request({
-        invoke: utils.api.requestTopicList,
-        params: {},
-        result: utils.fakeData.DYNAMIC_LIST_DATA
-      })
-        .then(function (res) {
-          // store.state.dynamicDate.push(...res.data.Topic)
-          store.commit('TOPIC_LIST', {
-            dynamicData: res.data.Topic
-          })
-          console.log(this.dynamicData)
+    methods: {
+      async refresh () {
+        let that = this
+        console.log(that)
+        return utils.request({
+          invoke: utils.api.requestTopicList,
+          params: {},
+          result: utils.fakeData.DYNAMIC_LIST_DATA
         })
-      console.log(this.dynamicData)
+          .then(async function (res) {
+            for (let i = 0; i < res.data.Topic.length; i++) {
+              res.data.Topic[i].author_name = await utils.userLookUp(res.data.Topic[i].author)
+            }
+            // store.state.dynamicDate.push(...res.data.Topic)
+            store.commit('TOPIC_LIST', {
+              dynamicData: res.data.Topic
+            })
+          })
+      }
+    },
+    mounted () {
+      this.refresh()
     },
     computed: {
       ...mapState(
