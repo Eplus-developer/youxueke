@@ -93,7 +93,7 @@
       },
       onShow () {
         let that = this
-        this.$root.$mp.page.getTabBar().setData({selected: 1})
+        // this.$root.$mp.page.getTabBar().setData({selected: 1})
         wx.getUserInfo({
           success (res) {
             store.commit('GET_USER_INFO', {

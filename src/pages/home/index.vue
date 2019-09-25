@@ -41,7 +41,9 @@
           // {title: '我参加的', url: '/pages/home/main'},
           // {title: '我提问的', url: '/pages/home/main'},
           {title: '我预约的', url: '/pages/course-list/main?type=take-part'},
-          {title: '我发布的', url: '/pages/course-list/main?type=post'}
+          {title: '我发布的', url: '/pages/course-list/main?type=post'},
+          {title: '发布课程', url: '/pages/post/main'},
+          {title: '发布问题', url: '/pages/question/main'}
         ]
       }
     },
@@ -59,7 +61,7 @@
       }
     },
     onShow () {
-      this.$root.$mp.page.getTabBar().setData({selected: 3})
+      // this.$root.$mp.page.getTabBar().setData({selected: 3})
       this.checkLogin()
     }
   }
